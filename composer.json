@@ -19,7 +19,8 @@
     "autoload": {
         "psr-0": {
             "FactoryGirl\\Tests": "tests",
-            "FactoryGirl": "src"
+            "FactoryGirl": "src",
+            "Doctrine\\Tests": "vendor/doctrine/dbal/tests"
         }
     },
     "target-dir": "factory-girl-php"
