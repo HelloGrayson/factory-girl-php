@@ -1,9 +1,9 @@
 <?php
 
-namespace FactoryGirl\Doctrine\ORM;
+namespace FactoryGirl\Tests\Doctrine\ORM;
 
 use FactoryGirl\Doctrine\ORM\Repository,
-    FactoryGirl\Doctrine\ORM\TestEntity\User;
+    FactoryGirl\Tests\Doctrine\ORM\TestEntity\User;
 
 /**
  * @category   FactoryGirl
@@ -25,7 +25,7 @@ class RepositoryTest extends TestCase
 
         $this->repository = new Repository(
             $this->em,
-            $this->em->getClassMetadata('FactoryGirl\Doctrine\ORM\TestEntity\User')
+            $this->em->getClassMetadata('FactoryGirl\Tests\Doctrine\ORM\TestEntity\User')
         );
     }
 
@@ -39,7 +39,7 @@ class RepositoryTest extends TestCase
         $this->em->flush();
 
         $this->assertInstanceOf(
-            'FactoryGirl\Doctrine\ORM\TestEntity\User',
+            'FactoryGirl\Tests\Doctrine\ORM\TestEntity\User',
             $this->repository->getReference($user->id)
         );
     }

@@ -1,9 +1,9 @@
 <?php
 
-namespace FactoryGirl\Doctrine\ORM;
+namespace FactoryGirl\Tests\Doctrine\ORM;
 
 use PHPUnit_Framework_TestCase,
-    FactoryGirl\Doctrine\TestDb;
+    FactoryGirl\Tests\Doctrine\TestDb;
 
 /**
  * @category   FactoryGirl
@@ -33,7 +33,7 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
         $this->testDb = new TestDb(
             $here . '/TestEntity',
             $here . '/TestProxy',
-            'FactoryGirl\Doctrine\ORM\TestProxy'
+            'FactoryGirl\Tests\Doctrine\ORM\TestProxy'
         );
 
         $this->em = $this->testDb->createEntityManager();

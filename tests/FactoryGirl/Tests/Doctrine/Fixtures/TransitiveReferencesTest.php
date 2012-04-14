@@ -1,6 +1,6 @@
 <?php
 
-namespace FactoryGirl\Doctrine\Fixtures;
+namespace FactoryGirl\Tests\Doctrine\Fixtures;
 
 class TransitiveReferencesTest extends TestCase
 {

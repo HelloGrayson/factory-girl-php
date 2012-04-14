@@ -1,10 +1,10 @@
 <?php
 
-namespace FactoryGirl\Doctrine\Fixtures;
+namespace FactoryGirl\Tests\Doctrine\Fixtures;
 
 use PHPUnit_Framework_TestCase,
     PHPUnit_Framework_Error,
-    FactoryGirl\Doctrine\TestDb,
+    FactoryGirl\Tests\Doctrine\TestDb,
     Doctrine\ORM\EntityManager,
     Exception;
 
@@ -36,13 +36,13 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
         $this->testDb = new TestDb(
             $here . '/TestEntity',
             $here . '/TestProxy',
-            'FactoryGirl\Doctrine\Fixtures\TestProxy'
+            'FactoryGirl\Tests\Doctrine\Fixtures\TestProxy'
         );
 
         $this->em = $this->testDb->createEntityManager();
 
         $this->factory = new FixtureFactory($this->em);
-        $this->factory->setEntityNamespace('FactoryGirl\Doctrine\Fixtures\TestEntity');
+        $this->factory->setEntityNamespace('FactoryGirl\Tests\Doctrine\Fixtures\TestEntity');
     }
     
     /**

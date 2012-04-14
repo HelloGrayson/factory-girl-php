@@ -3,9 +3,9 @@
 namespace Doctrine\Tests\DBAL\Types;
 
 use Doctrine\DBAL\Types\Type;
-use Doctrine\Tests\DBAL\Mocks;
+use Doctrine\DBAL\Mocks;
 
-Type::addType('statusarray', 'FactoryGirl\Doctrine\DBAL\Types\StatusArrayType');
+Type::addType('statusarray', 'FactoryGirl\Tests\Doctrine\DBAL\Types\StatusArrayType');
 
 class StatusArrayTest extends \Doctrine\Tests\DbalTestCase
 {
@@ -13,7 +13,7 @@ class StatusArrayTest extends \Doctrine\Tests\DbalTestCase
     
     /**
      *
-     * @var FactoryGirl\Doctrine\DBAL\Types\StatusArrayType
+     * @var FactoryGirl\Tests\Doctrine\DBAL\Types\StatusArrayType
      */
     protected $type;
 

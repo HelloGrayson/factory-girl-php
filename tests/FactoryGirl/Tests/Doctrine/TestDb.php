@@ -1,6 +1,6 @@
 <?php
 
-namespace FactoryGirl\Doctrine;
+namespace FactoryGirl\Tests\Doctrine;
 
 use Doctrine\ORM\EntityManager,
     Doctrine\ORM\Tools\SchemaTool,

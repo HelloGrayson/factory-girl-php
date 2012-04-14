@@ -1,5 +1,5 @@
 <?php
-namespace FactoryGirl\Doctrine\Fixtures;
+namespace FactoryGirl\Tests\Doctrine\Fixtures;
 
 class ReferenceTest extends TestCase
 {

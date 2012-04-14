@@ -1,5 +1,5 @@
 <?php
-namespace FactoryGirl\Doctrine\Fixtures;
+namespace FactoryGirl\Tests\Doctrine\Fixtures;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -91,12 +91,12 @@ class BasicUsageTest extends TestCase
         $this->factory->defineEntity('Person\User');
 
         $this->assertEquals(
-            'FactoryGirl\Doctrine\Fixtures\TestEntity\SpaceShip',
+            'FactoryGirl\Tests\Doctrine\Fixtures\TestEntity\SpaceShip',
             get_class($this->factory->get('SpaceShip'))
         );
 
         $this->assertEquals(
-            'FactoryGirl\Doctrine\Fixtures\TestEntity\Person\User',
+            'FactoryGirl\Tests\Doctrine\Fixtures\TestEntity\Person\User',
             get_class($this->factory->get('Person\User'))
         );
     }
@@ -107,13 +107,13 @@ class BasicUsageTest extends TestCase
     public function entityCanBeDefinedToAnotherNamespace()
     {
         $this->factory->defineEntity(
-            '\FactoryGirl\Doctrine\Fixtures\TestAnotherEntity\Artist'
+            '\FactoryGirl\Tests\Doctrine\Fixtures\TestAnotherEntity\Artist'
         );
 
         $this->assertEquals(
-            'FactoryGirl\Doctrine\Fixtures\TestAnotherEntity\Artist',
+            'FactoryGirl\Tests\Doctrine\Fixtures\TestAnotherEntity\Artist',
             get_class($this->factory->get(
-                '\FactoryGirl\Doctrine\Fixtures\TestAnotherEntity\Artist'
+                '\FactoryGirl\Tests\Doctrine\Fixtures\TestAnotherEntity\Artist'
             ))
         );
     }

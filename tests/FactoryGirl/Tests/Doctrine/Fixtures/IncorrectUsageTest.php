@@ -1,5 +1,5 @@
 <?php
-namespace FactoryGirl\Doctrine\Fixtures;
+namespace FactoryGirl\Tests\Doctrine\Fixtures;
 
 class IncorrectUsageTest extends TestCase
 {
@@ -30,7 +30,7 @@ class IncorrectUsageTest extends TestCase
      */
     public function throwsWhenTryingToDefineEntitiesThatAreNotEntities()
     {
-        $this->assertTrue(class_exists('FactoryGirl\Doctrine\Fixtures\TestEntity\NotAnEntity', true));
+        $this->assertTrue(class_exists('FactoryGirl\Tests\Doctrine\Fixtures\TestEntity\NotAnEntity', true));
         
         $self = $this;
         $this->assertThrows(function() use ($self) {
