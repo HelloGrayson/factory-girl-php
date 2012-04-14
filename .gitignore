@@ -2,3 +2,4 @@
 .project
 autoload.php
 phpunit.xml
+composer.phar
