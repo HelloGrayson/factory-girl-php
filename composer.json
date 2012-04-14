@@ -1,0 +1,22 @@
+{
+    "name": "breerly/factory-girl-php",
+    "type": "library",
+    "description": "Fixture replacement for focused and readable tests - A PHP port of Thoughtbot's Ruby Factory Girl",
+    "keywords": ["testing", "fixture", "fixture factory"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Grayson Koonce",
+            "email": "breerly@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2"
+    },
+    "autoload": {
+        "psr-0": {
+            "FactoryGirl": "src"
+        }
+    },
+    "target-dir": "factory-girl-php"
+}

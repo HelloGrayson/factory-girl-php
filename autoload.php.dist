@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * register standard PSR-0 autoload method, not needed with most frameworks
+ * @see https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
+ */
+spl_autoload_register(function($class){
+    $file = implode(DIRECTORY_SEPARATOR, explode('\\', $class)) . '.php';
+    require_once __DIR__ . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . $file;
+});
