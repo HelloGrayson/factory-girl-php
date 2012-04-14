@@ -18,6 +18,7 @@
     },
     "autoload": {
         "psr-0": {
+            "FactoryGirl\\Tests": "tests",
             "FactoryGirl": "src"
         }
     },

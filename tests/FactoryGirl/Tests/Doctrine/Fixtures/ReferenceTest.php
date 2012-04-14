@@ -1,6 +1,8 @@
 <?php
 namespace FactoryGirl\Tests\Doctrine\Fixtures;
 
+use FactoryGirl\Doctrine\Fixtures\FieldDef;
+
 class ReferenceTest extends TestCase
 {
     public function setUp()

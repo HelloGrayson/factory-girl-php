@@ -2,6 +2,8 @@
 
 namespace FactoryGirl\Tests\Doctrine\Fixtures;
 
+use FactoryGirl\Doctrine\Fixtures\FieldDef;
+
 class SequenceTest extends TestCase
 {
     /**

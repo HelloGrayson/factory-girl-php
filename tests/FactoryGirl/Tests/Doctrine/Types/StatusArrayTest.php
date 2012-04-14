@@ -1,13 +1,14 @@
 <?php
 
-namespace Doctrine\Tests\DBAL\Types;
+namespace FactoryGirl\Tests\Doctrine\Types;
 
+use FactoryGirl\Tests\Doctrine\Fixtures\TestCase;
 use Doctrine\DBAL\Types\Type;
-use Doctrine\DBAL\Mocks;
+use Doctrine\Tests\DBAL\Mocks\MockPlatform;
 
 Type::addType('statusarray', 'FactoryGirl\Tests\Doctrine\DBAL\Types\StatusArrayType');
 
-class StatusArrayTest extends \Doctrine\Tests\DbalTestCase
+class StatusArrayTest extends TestCase
 {
     protected $platform;
     
@@ -17,9 +18,9 @@ class StatusArrayTest extends \Doctrine\Tests\DbalTestCase
      */
     protected $type;
 
-    protected function setUp()
+    public function setUp()
     {
-        $this->platform = new \Doctrine\Tests\DBAL\Mocks\MockPlatform();
+        $this->platform = new MockPlatform();
         $this->type = Type::getType('statusarray');
     }
 

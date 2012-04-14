@@ -2,6 +2,8 @@
 
 namespace FactoryGirl\Tests\Doctrine\Fixtures;
 
+use FactoryGirl\Doctrine\Fixtures\FieldDef;
+
 class TransitiveReferencesTest extends TestCase
 {
     private function simpleSetup()
