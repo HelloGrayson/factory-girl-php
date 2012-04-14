@@ -1,12 +1,12 @@
 <?php
 
-namespace Xi\Doctrine\ORM;
+namespace FactoryGirl\Doctrine\ORM;
 
-use Xi\Doctrine\ORM\Repository,
-    Xi\Doctrine\ORM\TestEntity\User;
+use FactoryGirl\Doctrine\ORM\Repository,
+    FactoryGirl\Doctrine\ORM\TestEntity\User;
 
 /**
- * @category   Xi
+ * @category   FactoryGirl
  * @package    Doctrine
  * @subpackage ORM
  * @author     Mikko Hirvonen <mikko.petteri.hirvonen@gmail.com>
@@ -25,7 +25,7 @@ class RepositoryTest extends TestCase
 
         $this->repository = new Repository(
             $this->em,
-            $this->em->getClassMetadata('Xi\Doctrine\ORM\TestEntity\User')
+            $this->em->getClassMetadata('FactoryGirl\Doctrine\ORM\TestEntity\User')
         );
     }
 
@@ -39,7 +39,7 @@ class RepositoryTest extends TestCase
         $this->em->flush();
 
         $this->assertInstanceOf(
-            'Xi\Doctrine\ORM\TestEntity\User',
+            'FactoryGirl\Doctrine\ORM\TestEntity\User',
             $this->repository->getReference($user->id)
         );
     }

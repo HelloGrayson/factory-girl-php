@@ -1,5 +1,5 @@
 <?php
-namespace Xi\Doctrine\Fixtures;
+namespace FactoryGirl\Doctrine\Fixtures;
 
 class PersistingTest extends TestCase
 {
@@ -15,7 +15,7 @@ class PersistingTest extends TestCase
         $this->em->flush();
         
         $this->assertNotNull($ss->getId());
-        $this->assertEquals($ss, $this->em->find('Xi\Doctrine\Fixtures\TestEntity\SpaceShip', $ss->getId()));
+        $this->assertEquals($ss, $this->em->find('FactoryGirl\Doctrine\Fixtures\TestEntity\SpaceShip', $ss->getId()));
     }
     
     /**
@@ -31,7 +31,7 @@ class PersistingTest extends TestCase
         $q = $this->em
             ->createQueryBuilder()
             ->select('ss')
-            ->from('Xi\Doctrine\Fixtures\TestEntity\SpaceShip', 'ss')
+            ->from('FactoryGirl\Doctrine\Fixtures\TestEntity\SpaceShip', 'ss')
             ->getQuery();
         $this->assertEmpty($q->getResult());
     }

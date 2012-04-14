@@ -1,5 +1,5 @@
 <?php
-namespace Xi\Doctrine\ORM;
+namespace FactoryGirl\Doctrine\ORM;
 use Doctrine\ORM\QueryBuilder as DoctrineQueryBuilder,
     Doctrine\ORM\EntityManager,
     Doctrine\ORM\Query;

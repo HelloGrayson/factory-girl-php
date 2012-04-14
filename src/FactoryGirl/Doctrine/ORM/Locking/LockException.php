@@ -1,5 +1,5 @@
 <?php
-namespace Xi\Doctrine\ORM\Locking;
+namespace FactoryGirl\Doctrine\ORM\Locking;
 
-class LockException extends \Exception implements Xi\Doctrine\Exception
+class LockException extends \Exception implements FactoryGirl\Doctrine\Exception
 {}

@@ -1,10 +1,10 @@
 <?php
-namespace Xi\Doctrine\ORM\Locking;
+namespace FactoryGirl\Doctrine\ORM\Locking;
 
 /**
  * A hack for pessimistic version locks.
  *
- * @see Xi\Doctrine\ORM\Repository::useWithPessimisticVersionLock
+ * @see FactoryGirl\Doctrine\ORM\Repository::useWithPessimisticVersionLock
  */
 interface VersionLockable
 {

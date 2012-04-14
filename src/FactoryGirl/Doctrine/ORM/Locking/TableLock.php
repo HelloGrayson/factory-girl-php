@@ -1,7 +1,7 @@
 <?php
-namespace Xi\Doctrine\ORM\Locking;
+namespace FactoryGirl\Doctrine\ORM\Locking;
 
-use Xi\Doctrine\ORM\Repository;
+use FactoryGirl\Doctrine\ORM\Repository;
 
 /**
  * Implements a transaction that locks the underlying table. Probably only

@@ -6,10 +6,10 @@ Factory Girl in PHP
 A PHP port of Thoughtbot's Ruby [Factory Girl](https://github.com/thoughtbot/factory_girl)
 
 
-Xi FixtureFactory
+FactoryGirl FixtureFactory
 --------------
 
-`Xi\Doctrine\Fixtures\FixtureFactory` provides convenient creation of Doctrine entities in tests. If you're familiar with [FactoryGirl](https://github.com/thoughtbot/factory_girl) for Ruby, then this is essentially the same thing for Doctrine/PHP.
+`FactoryGirl\Doctrine\Fixtures\FixtureFactory` provides convenient creation of Doctrine entities in tests. If you're familiar with [FactoryGirl](https://github.com/thoughtbot/factory_girl) for Ruby, then this is essentially the same thing for Doctrine/PHP.
 
 ### Motivation ###
 
@@ -29,8 +29,8 @@ We'll assume you have a base class for your tests that arranges a fresh `EntityM
 
 ```php
 <?php
-use Xi\Doctrine\Fixtures\FixtureFactory,
-    Xi\Doctrine\Fixtures\FieldDef;
+use FactoryGirl\Doctrine\Fixtures\FixtureFactory,
+    FactoryGirl\Doctrine\Fixtures\FieldDef;
 
 abstract class TestCase extends \PHPUnit_Framework_TestCase
 {

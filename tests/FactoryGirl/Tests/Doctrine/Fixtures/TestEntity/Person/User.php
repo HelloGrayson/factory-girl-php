@@ -1,6 +1,6 @@
 <?php
 
-namespace Xi\Doctrine\Fixtures\TestEntity\Person;
+namespace FactoryGirl\Doctrine\Fixtures\TestEntity\Person;
 
 /**
  * @Entity

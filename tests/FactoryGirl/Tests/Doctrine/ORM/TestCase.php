@@ -1,12 +1,12 @@
 <?php
 
-namespace Xi\Doctrine\ORM;
+namespace FactoryGirl\Doctrine\ORM;
 
 use PHPUnit_Framework_TestCase,
-    Xi\Doctrine\TestDb;
+    FactoryGirl\Doctrine\TestDb;
 
 /**
- * @category   Xi
+ * @category   FactoryGirl
  * @package    Doctrine
  * @subpackage ORM
  * @author     Mikko Hirvonen <mikko.petteri.hirvonen@gmail.com>
@@ -33,7 +33,7 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
         $this->testDb = new TestDb(
             $here . '/TestEntity',
             $here . '/TestProxy',
-            'Xi\Doctrine\ORM\TestProxy'
+            'FactoryGirl\Doctrine\ORM\TestProxy'
         );
 
         $this->em = $this->testDb->createEntityManager();

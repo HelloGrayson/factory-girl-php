@@ -1,9 +1,9 @@
 <?php
 
-namespace Xi\Doctrine\ORM\TestEntity;
+namespace FactoryGirl\Doctrine\ORM\TestEntity;
 
 /**
- * @Entity(repositoryClass="Xi\Doctrine\ORM\Repository")
+ * @Entity(repositoryClass="FactoryGirl\Doctrine\ORM\Repository")
  */
 class User
 {

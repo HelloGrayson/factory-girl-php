@@ -1,14 +1,14 @@
 <?php
-namespace Xi\Doctrine\ORM;
+namespace FactoryGirl\Doctrine\ORM;
 
 use Doctrine\DBAL\LockMode,
     Doctrine\ORM\EntityManager,
     Doctrine\ORM\EntityRepository,
     Doctrine\ORM\OptimisticLockException,
-    Xi\Doctrine\ORM\Locking\VersionLockable,
-    Xi\Doctrine\ORM\Locking\TableLock,
-    Xi\Doctrine\ORM\Locking\LockException,
-    Xi\Doctrine\ORM\QueryBuilder;
+    FactoryGirl\Doctrine\ORM\Locking\VersionLockable,
+    FactoryGirl\Doctrine\ORM\Locking\TableLock,
+    FactoryGirl\Doctrine\ORM\Locking\LockException,
+    FactoryGirl\Doctrine\ORM\QueryBuilder;
 
 class Repository extends EntityRepository
 {

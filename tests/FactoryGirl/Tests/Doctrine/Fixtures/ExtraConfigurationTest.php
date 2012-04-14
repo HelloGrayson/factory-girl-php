@@ -1,5 +1,5 @@
 <?php
-namespace Xi\Doctrine\Fixtures;
+namespace FactoryGirl\Doctrine\Fixtures;
 
 class ExtraConfigurationTest extends TestCase
 {

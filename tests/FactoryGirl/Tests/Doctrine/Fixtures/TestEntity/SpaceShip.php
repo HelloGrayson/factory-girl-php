@@ -1,5 +1,5 @@
 <?php
-namespace Xi\Doctrine\Fixtures\TestEntity;
+namespace FactoryGirl\Doctrine\Fixtures\TestEntity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 

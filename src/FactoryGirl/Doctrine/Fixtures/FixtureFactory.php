@@ -1,5 +1,5 @@
 <?php
-namespace Xi\Doctrine\Fixtures;
+namespace FactoryGirl\Doctrine\Fixtures;
 
 use Doctrine\ORM\EntityManager,
     Doctrine\Common\Collections\Collection,

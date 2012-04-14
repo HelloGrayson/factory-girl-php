@@ -1,6 +1,6 @@
 <?php
 
-namespace Xi\Doctrine\DBAL\Types;
+namespace FactoryGirl\Doctrine\DBAL\Types;
 
 use Doctrine\DBAL\Types\Type;
 use Doctrine\DBAL\Types\ConversionException;

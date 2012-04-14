@@ -1,6 +1,6 @@
 <?php
 
-namespace Xi\Doctrine;
+namespace FactoryGirl\Doctrine;
 
 use Doctrine\ORM\EntityManager,
     Doctrine\ORM\Tools\SchemaTool,
@@ -8,7 +8,7 @@ use Doctrine\ORM\EntityManager,
     Doctrine\ORM\Configuration;
 
 /**
- * @category Xi
+ * @category FactoryGirl
  * @package  Doctrine
  * @author   Martin Pärtel
  * @author   Mikko Hirvonen <mikko.petteri.hirvonen@gmail.com>

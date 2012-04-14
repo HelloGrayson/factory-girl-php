@@ -1,8 +1,8 @@
 <?php
-namespace Xi\Doctrine;
+namespace FactoryGirl\Doctrine;
 
 /**
- * Marker interface for Xi\Doctrine exceptions.
+ * Marker interface for FactoryGirl\Doctrine exceptions.
  */
 interface Exception
 {}

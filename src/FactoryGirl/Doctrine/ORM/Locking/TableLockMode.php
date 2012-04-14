@@ -1,5 +1,5 @@
 <?php
-namespace Xi\Doctrine\ORM\Locking;
+namespace FactoryGirl\Doctrine\ORM\Locking;
 
 class TableLockMode
 {

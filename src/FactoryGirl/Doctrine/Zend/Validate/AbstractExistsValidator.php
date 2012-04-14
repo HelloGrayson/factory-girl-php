@@ -1,10 +1,10 @@
 <?php
-namespace Xi\Doctrine\Zend\Validate;
+namespace FactoryGirl\Doctrine\Zend\Validate;
 
 use Zend_Validate_Abstract;
 
 /**
- * @category   Xi
+ * @category   FactoryGirl
  * @package    Doctrine
  * @subpackage Zend
  * @author     Mikko Hirvonen <mikko.petteri.hirvonen@gmail.com>

@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Xi
+ * FactoryGirl
  *
- * @category Xi
+ * @category FactoryGirl
  * @package  Doctrine
  * @license  http://www.opensource.org/licenses/BSD-3-Clause New BSD License
  */
 
-namespace Xi\Doctrine\DBAL\Logging;
+namespace FactoryGirl\Doctrine\DBAL\Logging;
 
 use Doctrine\DBAL\Logging\SQLLogger,
     Zend_Wildfire_Plugin_FirePhp as FirePhp,
@@ -17,7 +17,7 @@ use Doctrine\DBAL\Logging\SQLLogger,
 /**
  * Doctrine query logger for Zend FirePHP
  *
- * @category Xi
+ * @category FactoryGirl
  * @package  Doctrine
  * @author   Mikko Hirvonen <mikko.petteri.hirvonen@gmail.com>
  */

@@ -1,6 +1,6 @@
 <?php
 
-namespace Xi\Doctrine\Fixtures;
+namespace FactoryGirl\Doctrine\Fixtures;
 
 class SequenceTest extends TestCase
 {
