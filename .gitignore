@@ -1,2 +1,4 @@
 .idea
 .project
+autoload.php
+phpunit.xml
