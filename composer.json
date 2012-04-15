@@ -2,7 +2,15 @@
     "name": "breerly/factory-girl-php",
     "type": "library",
     "description": "Fixture replacement for focused and readable tests - A PHP port of Thoughtbot's Ruby Factory Girl",
-    "keywords": ["testing", "fixture", "fixture factory"],
+    "keywords": [
+        "factory girl",
+        "fixture factory",
+        "fixture replacement",
+        "object mother",
+        "testing",
+        "fixture",
+        "tdd"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -14,7 +22,8 @@
         "php": ">=5.3.2",
         "doctrine/orm": "=2.2.1",
         "doctrine/dbal": "=2.2.1",
-        "doctrine/common": "=2.2.1"
+        "doctrine/common": "=2.2.1",
+        "breerly/zf1": ">=0"
     },
     "autoload": {
         "psr-0": {
