@@ -9,7 +9,7 @@ A PHP port of Thoughtbot's Ruby [Factory Girl](https://github.com/thoughtbot/fac
 FactoryGirl FixtureFactory
 --------------
 
-`FactoryGirl\Doctrine\Fixtures\FixtureFactory` provides convenient creation of Doctrine entities in tests. If you're familiar with [FactoryGirl](https://github.com/thoughtbot/factory_girl) for Ruby, then this is essentially the same thing for Doctrine/PHP.
+`FactoryGirl\Provider\Doctrine\Fixtures\FixtureFactory` provides convenient creation of Doctrine entities in tests. If you're familiar with [FactoryGirl](https://github.com/thoughtbot/factory_girl) for Ruby, then this is essentially the same thing for Doctrine/PHP.
 
 ### Motivation ###
 
@@ -29,8 +29,8 @@ We'll assume you have a base class for your tests that arranges a fresh `EntityM
 
 ```php
 <?php
-use FactoryGirl\Doctrine\Fixtures\FixtureFactory,
-    FactoryGirl\Doctrine\Fixtures\FieldDef;
+use FactoryGirl\Provider\Doctrine\Fixtures\FixtureFactory,
+    FactoryGirl\Provider\Doctrine\Fixtures\FieldDef;
 
 abstract class TestCase extends \PHPUnit_Framework_TestCase
 {
