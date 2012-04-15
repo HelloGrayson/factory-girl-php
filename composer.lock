@@ -1,11 +1,6 @@
 {
-    "hash": "944171ec6b33f177ea007a801d9345d8",
+    "hash": "610cc09e6dd3cb46b987795609098d64",
     "packages": [
-        {
-            "package": "breerly/zf1",
-            "version": "dev-master",
-            "source-reference": "0345e57f15f707b2e3e420e8b6a2c6167a1e2469"
-        },
         {
             "package": "doctrine/common",
             "version": "2.2.1"
