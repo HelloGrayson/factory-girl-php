@@ -2,7 +2,7 @@
 
 namespace FactoryGirl\Tests\Provider\Doctrine\Fixtures;
 
-use FactoryGirl\Provider\Doctrine\Fixtures\FieldDef;
+use FactoryGirl\Provider\Doctrine\FieldDef;
 
 class SequenceTest extends TestCase
 {

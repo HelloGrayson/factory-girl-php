@@ -1,6 +1,6 @@
 <?php
 
-namespace FactoryGirl\Provider\Doctrine\Fixtures;
+namespace FactoryGirl\Provider\Doctrine;
 
 /**
  * Contains static methods to define fields as sequences, references etc.

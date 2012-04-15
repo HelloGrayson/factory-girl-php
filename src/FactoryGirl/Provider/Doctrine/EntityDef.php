@@ -1,5 +1,5 @@
 <?php
-namespace FactoryGirl\Provider\Doctrine\Fixtures;
+namespace FactoryGirl\Provider\Doctrine;
 
 use Doctrine\ORM\EntityManager,
     Doctrine\ORM\Mapping\ClassMetadata,

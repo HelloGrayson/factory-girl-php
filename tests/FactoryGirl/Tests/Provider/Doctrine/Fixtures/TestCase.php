@@ -5,7 +5,7 @@ namespace FactoryGirl\Tests\Provider\Doctrine\Fixtures;
 use PHPUnit_Framework_TestCase,
     PHPUnit_Framework_Error,
     FactoryGirl\Tests\Provider\Doctrine\TestDb,
-    FactoryGirl\Provider\Doctrine\Fixtures\FixtureFactory,
+    FactoryGirl\Provider\Doctrine\FixtureFactory,
     Doctrine\ORM\EntityManager,
     Exception;
 
