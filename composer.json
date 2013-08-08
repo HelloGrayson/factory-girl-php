@@ -30,6 +30,5 @@
             "FactoryGirl": "src",
             "Doctrine\\Tests": "vendor/doctrine/dbal/tests"
         }
-    },
-    "target-dir": "factory-girl-php"
+    }
 }
