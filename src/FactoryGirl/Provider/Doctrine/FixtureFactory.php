@@ -122,7 +122,7 @@ class FixtureFactory
         $metadata = $def->getEntityMetadata();
         
         if ($metadata->isCollectionValuedAssociation($fieldName)) {
-            $metadata->setFieldValue($ent, $fieldName, new ArrayCollection());
+            $metadata->setFieldValue($ent, $fieldName, new ArrayCollection($fieldValue));
         } else {
             $metadata->setFieldValue($ent, $fieldName, $fieldValue);
 
