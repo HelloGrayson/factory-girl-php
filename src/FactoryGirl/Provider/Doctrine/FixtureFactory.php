@@ -122,13 +122,21 @@ class FixtureFactory
         $metadata = $def->getEntityMetadata();
         
         if ($metadata->isCollectionValuedAssociation($fieldName)) {
-            $metadata->setFieldValue($ent, $fieldName, new ArrayCollection());
+            $metadata->setFieldValue($ent, $fieldName, $this->createCollectionFrom($fieldValue));
         } else {
             $metadata->setFieldValue($ent, $fieldName, $fieldValue);
 
             if (is_object($fieldValue) && $metadata->isSingleValuedAssociation($fieldName)) {
                 $this->updateCollectionSideOfAssocation($ent, $metadata, $fieldName, $fieldValue);
             }
+        }
+    }
+
+    protected function createCollectionFrom($array = array()) {
+        if(is_array($array)) {
+            return new ArrayCollection($array);
+        } else {
+            return new ArrayCollection();
         }
     }
     
