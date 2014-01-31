@@ -20,9 +20,15 @@
     ],
     "require": {
         "php": ">=5.3.2",
+<<<<<<< HEAD
         "doctrine/orm": ">=2.2.1, <2.4-dev",
         "doctrine/dbal": ">=2.2.1, <2.4-dev",
         "doctrine/common": ">=2.2.1, <2.4-dev"
+=======
+        "doctrine/orm": ">=2.2.3,<2.4-dev",
+        "doctrine/dbal": "2.3.*",
+        "doctrine/common": "2.3.*"
+>>>>>>> 45e2453df38ff2240cb444251449aa3000b3b183
     },
     "autoload": {
         "psr-0": {
@@ -30,6 +36,5 @@
             "FactoryGirl": "src",
             "Doctrine\\Tests": "vendor/doctrine/dbal/tests"
         }
-    },
-    "target-dir": "factory-girl-php"
+    }
 }
