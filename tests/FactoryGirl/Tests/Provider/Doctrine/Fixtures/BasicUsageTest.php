@@ -47,6 +47,17 @@ class BasicUsageTest extends TestCase
             ->get('SpaceShip', array('name' => 'My CattleBruiser'));
         $this->assertEquals('My CattleBruiser', $ss->getName());
     }
+
+    /**
+     * @test
+     */
+    public function preservesDefaultValuesOfEntity()
+    {
+        $ss = $this->factory
+            ->defineEntity('SpaceStation')
+            ->get('SpaceStation');
+        $this->assertEquals('Babylon5', $ss->getName());
+    }    
     
     /**
      * @test
