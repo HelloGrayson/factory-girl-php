@@ -48,10 +48,20 @@ class EntityDef
     }
     
     private function defaultDefsFromMetadata() {
+
+        $defaultEntity = $this->getEntityMetadata()->newInstance();
+
         $allFields = array_merge($this->metadata->getFieldNames(), $this->metadata->getAssociationNames());
         foreach ($allFields as $fieldName) {
             if (!isset($this->fieldDefs[$fieldName])) {
-                $this->fieldDefs[$fieldName] = function() { return null; };
+
+                $defaultFieldValue = $this->metadata->getFieldValue($defaultEntity, $fieldName);
+
+                if($defaultFieldValue !== null) {
+                    $this->fieldDefs[$fieldName] = function() use ($defaultFieldValue) { return $defaultFieldValue; };
+                } else {
+                    $this->fieldDefs[$fieldName] = function() { return null; };
+                }
             }
         }
     }
