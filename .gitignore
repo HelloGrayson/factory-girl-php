@@ -4,3 +4,4 @@ autoload.php
 phpunit.xml
 composer.phar
 vendor
+composer.lock
