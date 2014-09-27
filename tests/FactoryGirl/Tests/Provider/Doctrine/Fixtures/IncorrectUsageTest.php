@@ -65,4 +65,17 @@ class IncorrectUsageTest extends TestCase
             ));
         });
     }
+
+    /**
+     * @test
+     */
+    public function throwsWhenTryingToGetLessThanOneInstance()
+    {
+        $this->factory->defineEntity('SpaceShip');
+
+        $self = $this;
+        $this->assertThrows(function() use ($self) {
+            $self->factory->getList('SpaceShip', array(), 0);
+        });
+    }
 }

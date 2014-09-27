@@ -152,4 +152,24 @@ class BasicUsageTest extends TestCase
             ))
         );
     }
+
+    /**
+     * @test
+     */
+    public function returnsListOfEntities()
+    {
+        $this->factory->defineEntity('SpaceShip');
+
+        $this->assertCount(1, $this->factory->getList('SpaceShip'));
+    }
+
+    /**
+     * @test
+     */
+    public function canSpecifyNumberOfReturnedInstances()
+    {
+        $this->factory->defineEntity('SpaceShip');
+
+        $this->assertCount(5, $this->factory->getList('SpaceShip', array(), 5));
+    }
 }

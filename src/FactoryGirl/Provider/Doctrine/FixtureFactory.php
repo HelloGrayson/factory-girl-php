@@ -108,7 +108,30 @@ class FixtureFactory
         
         return $ent;
     }
-    
+
+
+    /**
+     * Get an array of entities and their dependencies.
+     *
+     * Whether the entities are new or not depends on whether you've created
+     * a singleton with the entity name. See `getAsSingleton()`.
+     *
+     * If you've called `persistOnGet()` then the entities are also persisted.
+     */
+    public function getList($name, array $fieldOverrides = array(), $numberOfInstances = 1)
+    {
+        if ($numberOfInstances < 1) {
+            throw new \InvalidArgumentException('Can only get >= 1 instances');
+        }
+
+        $instances = array();
+        for ($i = 0; $i < $numberOfInstances; $i++) {
+            $instances[] = $this->get($name, $fieldOverrides);
+        }
+
+        return $instances;
+    }
+
     protected function checkFieldOverrides(EntityDef $def, array $fieldOverrides)
     {
         $extraFields = array_diff(array_keys($fieldOverrides), array_keys($def->getFieldDefs()));
