@@ -174,5 +174,18 @@ $this->factory->persistOnGet(false);
   side will get updated as long as you've remembered to specify the
   `inversedBy` attribute in your mapping.
 
+### Development ###
 
+#### Tests ####
 
+You need to have `PHPUnit` installed globally.
+
+```shell
+composer install --global phpunit/phpunit
+```
+
+The composer packages must be installed with
+
+```
+composer install --prefer-source
+```
