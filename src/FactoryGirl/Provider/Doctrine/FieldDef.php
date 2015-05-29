@@ -43,14 +43,24 @@ class FieldDef
             };
         }
     }
+
+    public static function past()
+    {
+        return new DateIntervalHelper(new \DateTime(), true);
+    }
+
+    public static function future()
+    {
+        return new DateIntervalHelper(new \DateTime(), false);
+    }
     
     /**
      * Defines a field to `get()` a named entity from the factory.
-     * 
+     *
      * The normal semantics of `get()` apply.
      * Normally this means that the field gets a fresh instance of the named
      * entity. If a singleton has been defined, `get()` will return that.
-     * 
+     *
      * @param string $name The name of the entity to get.
      * @return callable
      */
