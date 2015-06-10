@@ -27,8 +27,7 @@
     "autoload": {
         "psr-0": {
             "FactoryGirl\\Tests": "tests",
-            "FactoryGirl": "src",
-            "Doctrine\\Tests": "vendor/doctrine/dbal/tests"
+            "FactoryGirl": "src"
         }
     },
     "require-dev": {
