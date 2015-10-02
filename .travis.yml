@@ -10,9 +10,7 @@ branches:
   only:
   - master
 
-before_script:
-  - wget -nc http://getcomposer.org/composer.phar
-  - php composer.phar install
+install: composer install
 
 script: phpunit --testdox
 #script: phpunit --coverage-text
