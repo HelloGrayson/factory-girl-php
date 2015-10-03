@@ -156,6 +156,10 @@ $factory->defineEntity('EntityName', array(
 // Getting an entity (new or singleton)
 $factory->get('EntityName', array('field' => 'value'));
 
+// Getting an array of entities
+$numberOfEntities = 15;
+$factory->getList('EntityName', array('field' => 'value'), $numberOfEntities);
+
 // Singletons
 $factory->getAsSingleton('EntityName', array('field' => 'value'));
 $factory->setSingleton('EntityName', $entity);
