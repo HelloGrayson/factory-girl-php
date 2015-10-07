@@ -26,8 +26,12 @@
     },
     "autoload": {
         "psr-0": {
+            "FactoryGirl": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-0": {
             "FactoryGirl\\Tests": "tests",
-            "FactoryGirl": "src",
             "Doctrine\\Tests": "vendor/doctrine/dbal/tests"
         }
     }
