@@ -12,6 +12,8 @@ branches:
   only:
   - master
 
+before_install: composer self-update
+
 install: composer install
 
 script: phpunit --testdox
