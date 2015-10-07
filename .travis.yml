@@ -16,5 +16,7 @@ before_install: composer self-update
 
 install: composer install
 
-script: phpunit --testdox
+script:
+  - composer validate
+  - phpunit --testdox
 #script: phpunit --coverage-text
