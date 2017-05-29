@@ -26,12 +26,12 @@
     },
     "autoload": {
         "psr-4": {
-            "FactoryGirl\\": "src/FactoryGirl"
+            "FactoryGirl\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "FactoryGirl\\Tests\\": "tests/FactoryGirl/Tests"
+            "FactoryGirl\\Tests\\": "tests/"
         }
     }
 }
