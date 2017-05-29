@@ -31,17 +31,19 @@ class FieldDef
                 $n++;
                 return call_user_func($funcOrString, $n);
             };
-        } elseif (strpos($funcOrString, '%d') !== false) {
+        } 
+
+        if (strpos($funcOrString, '%d') !== false) {
             return function() use (&$n, $funcOrString) {
                 $n++;
                 return str_replace('%d', $n, $funcOrString);
             };
-        } else {
-            return function() use (&$n, $funcOrString) {
-                $n++;
-                return $funcOrString . $n;
-            };
-        }
+        } 
+        
+        return function() use (&$n, $funcOrString) {
+            $n++;
+            return $funcOrString . $n;
+        };
     }
 
     public static function past()

@@ -158,9 +158,9 @@ class FixtureFactory
     protected function createCollectionFrom($array = array()) {
         if(is_array($array)) {
             return new ArrayCollection($array);
-        } else {
-            return new ArrayCollection();
-        }
+        } 
+
+        return new ArrayCollection();
     }
     
     /**

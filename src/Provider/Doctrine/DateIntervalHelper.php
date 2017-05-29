@@ -85,13 +85,17 @@ class DateIntervalHelper
     {
         if ($format == self::DATE_TIME) {
             return $this->time;
-        } elseif ($format == self::TIMESTAMP) {
+        } 
+
+        if ($format == self::TIMESTAMP) {
             return $this->time->getTimestamp();
-        } elseif ($format == self::DATE_STRING) {
+        } 
+
+        if ($format == self::DATE_STRING) {
             return $this->time->format('d-m-y');
-        } else {
-            throw new \InvalidArgumentException("Unknown time format '". $format ."'");
-        }
+        } 
+
+        throw new \InvalidArgumentException("Unknown time format '". $format ."'");
     }
 
 }
