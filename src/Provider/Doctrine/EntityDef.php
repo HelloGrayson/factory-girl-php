@@ -114,19 +114,19 @@ class EntityDef
     {
         if (is_callable($def)) {
             return $this->ensureInvokable($def);
-        } else {
-            return function() use ($def) { return $def; };
-        }
+        } 
+
+        return function() use ($def) { return $def; };
     }
     
     private function ensureInvokable($f)
     {
         if (method_exists($f, '__invoke')) {
             return $f;
-        } else {
-            return function() use ($f) {
-                return call_user_func_array($f, func_get_args());
-            };
-        }
+        } 
+
+        return function() use ($f) {
+            return call_user_func_array($f, func_get_args());
+        };
     }
 }
