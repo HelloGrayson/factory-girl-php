@@ -1,6 +1,2 @@
-.idea
-.project
-autoload.php
+vendor/
 phpunit.xml
-composer.phar
-vendor
