@@ -13,6 +13,10 @@ branches:
   only:
   - master
 
+cache:
+  directories:
+    - $HOME/.composer/cache
+
 install: composer install
 
 script:
