@@ -13,13 +13,13 @@
 >
     <testsuites>
         <testsuite name="FactoryGirl Test Suite">
-            <directory>./tests/FactoryGirl/</directory>
+            <directory>./tests/</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory>./src/FactoryGirl/</directory>
+            <directory>./src/</directory>
         </whitelist>
     </filter>
 </phpunit>

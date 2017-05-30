@@ -25,13 +25,13 @@
         "doctrine/common": ">=2.2.1,<2.6-dev"
     },
     "autoload": {
-        "psr-0": {
-            "FactoryGirl": "src"
+        "psr-4": {
+            "FactoryGirl\\": "src/"
         }
     },
     "autoload-dev": {
-        "psr-0": {
-            "FactoryGirl\\Tests": "tests"
+        "psr-4": {
+            "FactoryGirl\\Tests\\": "tests/"
         }
     }
 }
