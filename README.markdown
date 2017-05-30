@@ -182,12 +182,6 @@ $this->factory->persistOnGet(false);
 
 #### Tests ####
 
-You need to have `PHPUnit` installed globally.
-
-```shell
-composer install --global phpunit/phpunit
-```
-
 The composer packages must be installed with
 
 ```
