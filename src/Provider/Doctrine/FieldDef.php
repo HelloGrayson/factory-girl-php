@@ -44,11 +44,17 @@ class FieldDef
         }
     }
 
+    /**
+     * @return DateIntervalHelper
+     */
     public static function past()
     {
         return new DateIntervalHelper(new \DateTime(), true);
     }
 
+    /**
+     * @return DateIntervalHelper
+     */
     public static function future()
     {
         return new DateIntervalHelper(new \DateTime(), false);
