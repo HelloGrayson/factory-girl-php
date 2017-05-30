@@ -18,6 +18,9 @@
             "email": "breerly@gmail.com"
         }
     ],
+    "config": {
+        "preferred-install": "dist"
+    },
     "require": {
         "php": ">=5.4.0",
         "doctrine/orm": ">=2.2.1,<2.6-dev",
