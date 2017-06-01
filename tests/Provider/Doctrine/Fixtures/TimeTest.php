@@ -25,11 +25,6 @@ class TimeTest extends TestCase
             'Error getting unix timestamp'
         );
         $this->assertEquals(
-            $time,
-            FieldDef::past()->years(3)->months(1)->days(2)->get(DateIntervalHelper::DATE_TIME),
-            'Error getting date time'
-        );
-        $this->assertEquals(
             $time->format('d-m-y'),
             FieldDef::past()->years(3)->months(1)->days(2)->get(DateIntervalHelper::DATE_STRING),
             'Error getting string'
@@ -45,9 +40,6 @@ class TimeTest extends TestCase
         $this->assertEquals(
             $time->getTimestamp(),
             FieldDef::future()->years(3)->months(1)->days(2)->get());
-        $this->assertEquals(
-            $time,
-            FieldDef::future()->years(3)->months(1)->days(2)->get(DateIntervalHelper::DATE_TIME));
         $this->assertEquals(
             $time->format('d-m-y'),
             FieldDef::future()->years(3)->months(1)->days(2)->get(DateIntervalHelper::DATE_STRING));
