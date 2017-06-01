@@ -124,6 +124,10 @@ class FixtureFactory
             throw new \InvalidArgumentException('Can only get >= 1 instances');
         }
 
+        if ($numberOfInstances > 1 && array_key_exists($name, $this->singletons)) {
+            $numberOfInstances = 1;
+        }
+
         $instances = array();
         for ($i = 0; $i < $numberOfInstances; $i++) {
             $instances[] = $this->get($name, $fieldOverrides);
