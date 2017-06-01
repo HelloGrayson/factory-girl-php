@@ -17,9 +17,11 @@ cache:
   directories:
     - $HOME/.composer/cache
 
+before_install:
+  - rm -f ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini
+
 install: composer install
 
 script:
   - composer validate
   - ./vendor/bin/phpunit --testdox
-#script: phpunit --coverage-text
