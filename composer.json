@@ -30,6 +30,9 @@
     "require-dev": {
         "phpunit/phpunit": "4.5.0"
     },
+    "suggest": {
+        "fzaninotto/faker": "For generating fake data in entity definitions"
+    },
     "autoload": {
         "psr-4": {
             "FactoryGirl\\": "src/"
