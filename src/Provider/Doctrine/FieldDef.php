@@ -78,4 +78,33 @@ class FieldDef
             return $factory->get($name);
         };
     }
+
+    /**
+     * Defines a field to `get()` a collection of named entities from the factory.
+     *
+     * The normal semantics of `get()` apply.
+     * 
+     * Normally this means that the field gets a fresh instance of the named
+     * entity. If a singleton has been defined, a collection with a single instance will be returned.
+     *
+     * @param string $name
+     * @param int $numberOfInstances
+     *
+     * @throws \InvalidArgumentException
+     * @return callable
+     */
+    public static function references($name, $numberOfInstances = 1)
+    {
+        if ($numberOfInstances < 1) {
+            throw new \InvalidArgumentException('Can only get >= 1 instances');
+        }
+
+        return function(FixtureFactory $factory) use ($name, $numberOfInstances) {
+            return $factory->getList(
+                $name, 
+                [], 
+                $numberOfInstances
+            );
+        };
+    }
 }
