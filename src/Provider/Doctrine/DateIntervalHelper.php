@@ -36,7 +36,7 @@ class DateIntervalHelper
      */
     public function years($years)
     {
-        if (!is_numeric($years)) {
+        if (!is_numeric($years) || $years != (int) $years) {
             throw new \RuntimeException();
         }
 
@@ -51,7 +51,7 @@ class DateIntervalHelper
      */
     public function months($months)
     {
-        if (!is_numeric($months)) {
+        if (!is_numeric($months) || $months != (int) $months) {
             throw new \RuntimeException();
         }
 
@@ -66,7 +66,7 @@ class DateIntervalHelper
      */
     public function days($days)
     {
-        if (!is_numeric($days)) {
+        if (!is_numeric($days) || $days != (int) $days) {
             throw new \RuntimeException();
         }
         
