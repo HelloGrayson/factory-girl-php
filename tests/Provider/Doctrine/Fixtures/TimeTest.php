@@ -21,17 +21,17 @@ class TimeTest extends TestCase
         $time->add($interval);
         $this->assertEquals(
             $time->getTimestamp(),
-            FieldDef::past()->days(2)->months(1)->years(3)->get(),
+            FieldDef::past()->years(3)->months(1)->days(2)->get(),
             'Error getting unix timestamp'
         );
         $this->assertEquals(
             $time,
-            FieldDef::past()->days(2)->months(1)->years(3)->get(DateIntervalHelper::DATE_TIME),
+            FieldDef::past()->years(3)->months(1)->days(2)->get(DateIntervalHelper::DATE_TIME),
             'Error getting date time'
         );
         $this->assertEquals(
             $time->format('d-m-y'),
-            FieldDef::past()->days(2)->months(1)->years(3)->get(DateIntervalHelper::DATE_STRING),
+            FieldDef::past()->years(3)->months(1)->days(2)->get(DateIntervalHelper::DATE_STRING),
             'Error getting string'
         );
 
