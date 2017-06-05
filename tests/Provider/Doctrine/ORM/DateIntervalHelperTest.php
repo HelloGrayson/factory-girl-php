@@ -15,7 +15,10 @@ class DateIntervalHelperTest extends \PHPUnit_Framework_TestCase
     {
         $helper = new DateIntervalHelper(new \DateTime());
         
-        $this->setExpectedException('RuntimeException');
+        $this->setExpectedException('InvalidArgumentException', sprintf(
+            'Expected integer or integerish string, got "%s" instead.',
+            is_object($years) ? get_class($years) : gettype($years)
+        ));
         
         $helper->years($years);
     }
@@ -29,8 +32,11 @@ class DateIntervalHelperTest extends \PHPUnit_Framework_TestCase
     {
         $helper = new DateIntervalHelper(new \DateTime());
         
-        $this->setExpectedException('RuntimeException');
-        
+        $this->setExpectedException('InvalidArgumentException', sprintf(
+            'Expected integer or integerish string, got "%s" instead.',
+            is_object($months) ? get_class($months) : gettype($months)
+        ));
+
         $helper->months($months);
     }
 
@@ -43,7 +49,10 @@ class DateIntervalHelperTest extends \PHPUnit_Framework_TestCase
     {
         $helper = new DateIntervalHelper(new \DateTime());
         
-        $this->setExpectedException('RuntimeException');
+        $this->setExpectedException('InvalidArgumentException', sprintf(
+            'Expected integer or integerish string, got "%s" instead.',
+            is_object($days) ? get_class($days) : gettype($days)
+        ));
         
         $helper->days($days);
     }

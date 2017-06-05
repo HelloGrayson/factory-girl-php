@@ -32,13 +32,12 @@ class DateIntervalHelper
 
     /**
      * @param int $years
+     * @throws \InvalidArgumentException
      * @return $this
      */
     public function years($years)
     {
-        if (!is_numeric($years) || $years != (int) $years) {
-            throw new \RuntimeException();
-        }
+        $this->assertIntegerish($years);
 
         $this->modify(new \DateInterval('P'.$years.'Y'));
         
@@ -47,13 +46,12 @@ class DateIntervalHelper
 
     /**
      * @param int $months
+     * @throws \InvalidArgumentException
      * @return $this
      */
     public function months($months)
     {
-        if (!is_numeric($months) || $months != (int) $months) {
-            throw new \RuntimeException();
-        }
+        $this->assertIntegerish($months);
 
         $this->modify(new \DateInterval('P'.$months.'M'));
         
@@ -62,14 +60,13 @@ class DateIntervalHelper
 
     /**
      * @param int $days
+     * @throws \InvalidArgumentException
      * @return $this
      */
     public function days($days)
     {
-        if (!is_numeric($days) || $days != (int) $days) {
-            throw new \RuntimeException();
-        }
-        
+        $this->assertIntegerish($days);
+
         $this->modify(new \DateInterval('P'.$days.'D'));
         
         return $this;
@@ -101,6 +98,20 @@ class DateIntervalHelper
         } 
 
         throw new \InvalidArgumentException("Unknown time format '". $format ."'");
+    }
+
+    /**
+     * @param mixed $value
+     * @throws \InvalidArgumentException
+     */
+    private function assertIntegerish($value)
+    {
+        if (!is_numeric($value) || $value != (int)$value) {
+            throw new \InvalidArgumentException(sprintf(
+                'Expected integer or integerish string, got "%s" instead.',
+                is_object($value) ? get_class($value) : gettype($value)
+            ));
+        }
     }
 
 }
