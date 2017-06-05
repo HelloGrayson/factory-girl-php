@@ -43,5 +43,4 @@ class Badge
     {
         return $this->owner;
     }
-
 }

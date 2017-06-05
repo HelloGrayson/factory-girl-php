@@ -27,7 +27,9 @@ class BasicUsageTest extends TestCase
     {
         $name = "Star";
         $this->factory->defineEntity('SpaceShip', array(
-            'name' => function() use (&$name) { return "M/S $name"; }
+            'name' => function () use (&$name) {
+                return "M/S $name";
+            }
         ));
         
         $this->assertEquals('M/S Star', $this->factory->get('SpaceShip')->getName());
@@ -57,7 +59,7 @@ class BasicUsageTest extends TestCase
             ->defineEntity('SpaceStation')
             ->get('SpaceStation');
         $this->assertEquals('Babylon5', $ss->getName());
-    }    
+    }
     
     /**
      * @test

@@ -2,12 +2,12 @@
 
 namespace FactoryGirl\Tests\Provider\Doctrine\Fixtures;
 
-use PHPUnit_Framework_TestCase,
-    PHPUnit_Framework_Error,
-    FactoryGirl\Tests\Provider\Doctrine\TestDb,
-    FactoryGirl\Provider\Doctrine\FixtureFactory,
-    Doctrine\ORM\EntityManager,
-    Exception;
+use PHPUnit_Framework_TestCase;
+use PHPUnit_Framework_Error;
+use FactoryGirl\Tests\Provider\Doctrine\TestDb;
+use FactoryGirl\Provider\Doctrine\FixtureFactory;
+use Doctrine\ORM\EntityManager;
+use Exception;
 
 abstract class TestCase extends PHPUnit_Framework_TestCase
 {

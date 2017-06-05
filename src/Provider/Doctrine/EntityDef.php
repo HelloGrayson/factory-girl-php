@@ -1,9 +1,9 @@
 <?php
 namespace FactoryGirl\Provider\Doctrine;
 
-use Doctrine\ORM\EntityManager,
-    Doctrine\ORM\Mapping\ClassMetadata,
-    Exception;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Mapping\ClassMetadata;
+use Exception;
 
 /**
  * An internal class that `FixtureFactory` uses to normalize and store entity definitions in.
@@ -47,20 +47,23 @@ class EntityDef
         }
     }
     
-    private function defaultDefsFromMetadata() {
-
+    private function defaultDefsFromMetadata()
+    {
         $defaultEntity = $this->getEntityMetadata()->newInstance();
 
         $allFields = array_merge($this->metadata->getFieldNames(), $this->metadata->getAssociationNames());
         foreach ($allFields as $fieldName) {
             if (!isset($this->fieldDefs[$fieldName])) {
-
                 $defaultFieldValue = $this->metadata->getFieldValue($defaultEntity, $fieldName);
 
-                if($defaultFieldValue !== null) {
-                    $this->fieldDefs[$fieldName] = function() use ($defaultFieldValue) { return $defaultFieldValue; };
+                if ($defaultFieldValue !== null) {
+                    $this->fieldDefs[$fieldName] = function () use ($defaultFieldValue) {
+                        return $defaultFieldValue;
+                    };
                 } else {
-                    $this->fieldDefs[$fieldName] = function() { return null; };
+                    $this->fieldDefs[$fieldName] = function () {
+                        return null;
+                    };
                 }
             }
         }
@@ -114,18 +117,20 @@ class EntityDef
     {
         if (is_callable($def)) {
             return $this->ensureInvokable($def);
-        } 
+        }
 
-        return function() use ($def) { return $def; };
+        return function () use ($def) {
+            return $def;
+        };
     }
     
     private function ensureInvokable($f)
     {
         if (method_exists($f, '__invoke')) {
             return $f;
-        } 
+        }
 
-        return function() use ($f) {
+        return function () use ($f) {
             return call_user_func_array($f, func_get_args());
         };
     }

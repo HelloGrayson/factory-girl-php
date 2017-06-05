@@ -40,18 +40,15 @@ class StatusArrayType extends Type
             }
         }
         
-        array_walk($value, function(&$walker) { 
-           $walker = '[' . $walker . ']';
+        array_walk($value, function (&$walker) {
+            $walker = '[' . $walker . ']';
         });
         
         return implode(';', $value);
-        
-        
     }
 
     public function convertToPHPValue($value, \Doctrine\DBAL\Platforms\AbstractPlatform $platform)
     {
-        
         if ($value === null) {
             return null;
         }
@@ -59,19 +56,16 @@ class StatusArrayType extends Type
         
         $ret = explode(';', $value);
         
-        array_walk($ret, function(&$unwashed) {
-           $unwashed = trim($unwashed, '[]');
+        array_walk($ret, function (&$unwashed) {
+            $unwashed = trim($unwashed, '[]');
         });
         
         
         return $ret;
-        
-    
     }
 
     public function getName()
     {
         return self::STATUSARRAY;
     }
-    
 }

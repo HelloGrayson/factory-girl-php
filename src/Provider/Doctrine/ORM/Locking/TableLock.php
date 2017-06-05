@@ -40,7 +40,7 @@ class TableLock
      * of Doctrine is a somewhat difficult task. Nevertheless, in simple cases a
      * good guesstimate as to the table aliases can be made; see relevant
      * methods below.
-     * 
+     *
      * @param int $lockMode a TableLockMode constant
      * @param callback $transaction
      * @return mixed
@@ -51,7 +51,7 @@ class TableLock
         $lock = $this->getLockString($lockMode);
         $unlock = $this->getUnlockString();
         
-        return $this->getRepository()->transaction(function(EntityManager $em, Repository $repository) use($lock, $unlock, $transaction) {
+        return $this->getRepository()->transaction(function (EntityManager $em, Repository $repository) use ($lock, $unlock, $transaction) {
             $conn = $em->getConnection();
             $conn->executeQuery($lock);
             try {
@@ -69,7 +69,7 @@ class TableLock
     /**
      * Get the MySQL statement for locking the table underlying this repository
      * for simple read and/or write operations given an appropriate lock mode
-     * 
+     *
      * @param int $lockMode a TableLockMode constant
      * @return string
      * @throws LockException
@@ -114,7 +114,7 @@ class TableLock
     /**
      * Attempt to guess at the table name aliases used by Doctrine for a given
      * table name
-     * 
+     *
      * @param string $tableName
      * @return array
      */
@@ -130,7 +130,7 @@ class TableLock
     
     /**
      * The MySQL statement required to unlock tables after a transaction
-     * 
+     *
      * @return string
      */
     private function getUnlockString()

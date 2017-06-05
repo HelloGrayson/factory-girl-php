@@ -2,14 +2,12 @@
 
 namespace FactoryGirl\Provider\Doctrine;
 
-
 /**
  * Class DateIntervalHelper
  * @package FactoryGirl\Provider\Doctrine
  */
 class DateIntervalHelper
 {
-
     const DATE_TIME = 1;
     const TIMESTAMP = 2;
     const DATE_STRING = 3;
@@ -87,15 +85,15 @@ class DateIntervalHelper
     {
         if ($format == self::DATE_TIME) {
             return $this->time;
-        } 
+        }
 
         if ($format == self::TIMESTAMP) {
             return $this->time->getTimestamp();
-        } 
+        }
 
         if ($format == self::DATE_STRING) {
             return $this->time->format('d-m-y');
-        } 
+        }
 
         throw new \InvalidArgumentException("Unknown time format '". $format ."'");
     }
@@ -113,5 +111,4 @@ class DateIntervalHelper
             ));
         }
     }
-
 }

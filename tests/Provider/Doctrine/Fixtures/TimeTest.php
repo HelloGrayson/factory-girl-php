@@ -2,7 +2,6 @@
 
 namespace FactoryGirl\Tests\Provider\Doctrine\Fixtures;
 
-
 use FactoryGirl\Provider\Doctrine\DateIntervalHelper;
 use FactoryGirl\Provider\Doctrine\FieldDef;
 
@@ -12,7 +11,6 @@ use FactoryGirl\Provider\Doctrine\FieldDef;
  */
 class TimeTest extends TestCase
 {
-
     public function testGetTimePast()
     {
         $time = new \DateTime();
@@ -29,7 +27,6 @@ class TimeTest extends TestCase
             FieldDef::past()->years(3)->months(1)->days(2)->get(DateIntervalHelper::DATE_STRING),
             'Error getting string'
         );
-
     }
 
     public function testGetTimeFuture()
@@ -43,7 +40,5 @@ class TimeTest extends TestCase
         $this->assertEquals(
             $time->format('d-m-y'),
             FieldDef::future()->years(3)->months(1)->days(2)->get(DateIntervalHelper::DATE_STRING));
-
     }
-
 }

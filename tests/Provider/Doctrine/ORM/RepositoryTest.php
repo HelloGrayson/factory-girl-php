@@ -2,8 +2,8 @@
 
 namespace FactoryGirl\Tests\Provider\Doctrine\ORM;
 
-use FactoryGirl\Provider\Doctrine\ORM\Repository,
-    FactoryGirl\Tests\Provider\Doctrine\ORM\TestEntity\User;
+use FactoryGirl\Provider\Doctrine\ORM\Repository;
+use FactoryGirl\Tests\Provider\Doctrine\ORM\TestEntity\User;
 
 /**
  * @category   FactoryGirl

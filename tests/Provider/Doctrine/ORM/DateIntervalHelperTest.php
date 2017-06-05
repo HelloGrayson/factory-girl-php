@@ -8,7 +8,7 @@ class DateIntervalHelperTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider providerInvalidIntegerish
-     * 
+     *
      * @param mixed $years
      */
     public function testYearsRejectsInvalidValue($years)
@@ -25,7 +25,7 @@ class DateIntervalHelperTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerInvalidIntegerish
-     * 
+     *
      * @param mixed $months
      */
     public function testMonthsRejectsInvalidValue($months)
@@ -42,7 +42,7 @@ class DateIntervalHelperTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerInvalidIntegerish
-     * 
+     *
      * @param mixed $days
      */
     public function testDaysRejectsInvalidValue($days)

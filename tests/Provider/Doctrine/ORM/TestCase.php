@@ -2,8 +2,8 @@
 
 namespace FactoryGirl\Tests\Provider\Doctrine\ORM;
 
-use PHPUnit_Framework_TestCase,
-    FactoryGirl\Tests\Provider\Doctrine\TestDb;
+use PHPUnit_Framework_TestCase;
+use FactoryGirl\Tests\Provider\Doctrine\TestDb;
 
 /**
  * @category   FactoryGirl

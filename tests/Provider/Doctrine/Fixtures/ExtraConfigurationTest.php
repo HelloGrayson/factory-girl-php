@@ -11,7 +11,7 @@ class ExtraConfigurationTest extends TestCase
         $this->factory->defineEntity('SpaceShip', array(
             'name' => 'Foo'
         ), array(
-            'afterCreate' => function(TestEntity\SpaceShip $ss, array $fieldValues) {
+            'afterCreate' => function (TestEntity\SpaceShip $ss, array $fieldValues) {
                 $ss->setName($ss->getName() . '-' . $fieldValues['name']);
             }
         ));
@@ -28,7 +28,7 @@ class ExtraConfigurationTest extends TestCase
         $this->factory->defineEntity('SpaceShip', array(
             'name' => 'Foo'
         ), array(
-            'afterCreate' => function(TestEntity\SpaceShip $ss, array $fieldValues) {
+            'afterCreate' => function (TestEntity\SpaceShip $ss, array $fieldValues) {
                 $ss->__construct($fieldValues['name'] . 'Master');
             }
         ));
