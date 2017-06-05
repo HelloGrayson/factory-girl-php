@@ -39,9 +39,9 @@ class DateIntervalHelper
         if (!is_numeric($years)) {
             throw new \RuntimeException();
         }
-        $interval = new \DateInterval('P'.$years.'Y');
-        $interval->invert = (int) $this->negative;
-        $this->time->add($interval);
+
+        $this->modify(new \DateInterval('P'.$years.'Y'));
+        
         return $this;
     }
 
@@ -55,9 +55,8 @@ class DateIntervalHelper
             throw new \RuntimeException();
         }
 
-        $interval = new \DateInterval('P'.$months.'M');
-        $interval->invert = (int) $this->negative;
-        $this->time->add($interval);
+        $this->modify(new \DateInterval('P'.$months.'M'));
+        
         return $this;
     }
 
@@ -70,11 +69,17 @@ class DateIntervalHelper
         if (!is_numeric($days)) {
             throw new \RuntimeException();
         }
-
-        $interval = new \DateInterval('P'.$days.'D');
-        $interval->invert = (int) $this->negative;
-        $this->time->add($interval);
+        
+        $this->modify(new \DateInterval('P'.$days.'D'));
+        
         return $this;
+    }
+    
+    private function modify(\DateInterval $interval)
+    {
+        $interval->invert = (int) $this->negative;
+        
+        $this->time->add($interval);
     }
 
     /**
