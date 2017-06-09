@@ -1,8 +1,9 @@
 <?php
 namespace FactoryGirl\Provider\Doctrine\ORM;
-use Doctrine\ORM\QueryBuilder as DoctrineQueryBuilder,
-    Doctrine\ORM\EntityManager,
-    Doctrine\ORM\Query;
+
+use Doctrine\ORM\QueryBuilder as DoctrineQueryBuilder;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Query;
 
 /**
  * Base class for use case specific query builders
@@ -73,7 +74,7 @@ class QueryBuilder extends DoctrineQueryBuilder
     
     /**
      * Configures the created Query using the configurers added to this builder
-     * 
+     *
      * @return \Doctrine\ORM\Query
      */
     public function getQuery()
@@ -87,9 +88,9 @@ class QueryBuilder extends DoctrineQueryBuilder
     
     /**
      * NOTE: Should be protected
-     * 
+     *
      * @param callback(Doctrine\ORM\Query) $configurer
-     * @return QueryBuilder 
+     * @return QueryBuilder
      */
     public function _configureQuery($configurer)
     {
@@ -102,21 +103,21 @@ class QueryBuilder extends DoctrineQueryBuilder
      * $status is a string that describes state the operation should affect and
      * $operation is a callback which is executed if and only if the status is
      * not already in effect.
-     * 
+     *
      * Example:
-     * 
+     *
      * public function withProduct() {
      *     return $this->ensure('product is joined', function($qb) {
      *         $qb->join('pv.product', 'p');
      *     });
      * }
-     * 
+     *
      * Should be used to allow the possibility of several different methods
      * each wanting to affect a certain state without messing up the query by
      * duplicate calls to methods. Has the pleasant side effect of describing
      * the results of operations on a more intimate level than the plain object
      * API can allow for, making for more self-documenting code.
-     * 
+     *
      * @param string $status
      * @param callback(QueryBuilder) $operation
      * @return QueryBuilder
@@ -132,13 +133,13 @@ class QueryBuilder extends DoctrineQueryBuilder
     
     /**
      * Configures the query to force result objects to be partially loaded
-     * 
+     *
      * @return QueryBuilder
      */
     protected function asPartial()
     {
-        return $this->ensure('partial loading is forced', function(QueryBuilder $builder) {
-            $builder->_configureQuery(function(Query $query) {
+        return $this->ensure('partial loading is forced', function (QueryBuilder $builder) {
+            $builder->_configureQuery(function (Query $query) {
                 $query->setHint(Query::HINT_FORCE_PARTIAL_LOAD, true);
             });
         });

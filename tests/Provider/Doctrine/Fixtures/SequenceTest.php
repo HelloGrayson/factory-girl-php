@@ -12,7 +12,9 @@ class SequenceTest extends TestCase
     public function sequenceGeneratorCallsAFunctionWithAnIncrementingArgument()
     {
         $this->factory->defineEntity('SpaceShip', array(
-            'name' => FieldDef::sequence(function($n) { return "Alpha $n"; })
+            'name' => FieldDef::sequence(function ($n) {
+                return "Alpha $n";
+            })
         ));
         $this->assertEquals('Alpha 1', $this->factory->get('SpaceShip')->getName());
         $this->assertEquals('Alpha 2', $this->factory->get('SpaceShip')->getName());

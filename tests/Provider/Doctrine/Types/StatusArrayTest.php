@@ -18,9 +18,8 @@ class StatusArrayTest extends TestCase
 
     public function setUp()
     {
-	$this->platform = $this->getMockForAbstractClass('\Doctrine\DBAL\Platforms\AbstractPlatform');
+        $this->platform = $this->getMockForAbstractClass('\Doctrine\DBAL\Platforms\AbstractPlatform');
         $this->type = Type::getType('statusarray');
-
     }
 
     /**
@@ -39,7 +38,6 @@ class StatusArrayTest extends TestCase
     {
         $this->assertNull($this->type->convertToDatabaseValue(null, $this->platform));
         $this->assertNull($this->type->convertToPHPValue(null, $this->platform));
-        
     }
     
     
@@ -110,7 +108,6 @@ class StatusArrayTest extends TestCase
                 '[lussen];[hofer];[645];[meisten:lusdre];[larva.lussutab.tussi]',
             )
         );
-        
     }
     
     
@@ -123,7 +120,4 @@ class StatusArrayTest extends TestCase
         $deserialized = $this->type->convertToPHPValue($serialized, $this->platform);
         $this->assertSame($expected, $deserialized);
     }
-    
-    
-
 }

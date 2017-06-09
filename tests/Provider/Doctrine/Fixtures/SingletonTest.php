@@ -37,7 +37,7 @@ class SingletonTest extends TestCase
         $this->factory->getAsSingleton('SpaceShip');
         
         $self = $this;
-        $this->assertThrows(function() use ($self) {
+        $this->assertThrows(function () use ($self) {
             $self->factory->getAsSingleton('SpaceShip');
         });
     }

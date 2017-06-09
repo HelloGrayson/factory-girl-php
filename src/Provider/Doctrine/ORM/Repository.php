@@ -1,19 +1,19 @@
 <?php
 namespace FactoryGirl\Provider\Doctrine\ORM;
 
-use Doctrine\DBAL\LockMode,
-    Doctrine\ORM\EntityManager,
-    Doctrine\ORM\EntityRepository,
-    Doctrine\ORM\OptimisticLockException,
-    FactoryGirl\Provider\Doctrine\ORM\Locking\VersionLockable,
-    FactoryGirl\Provider\Doctrine\ORM\Locking\TableLock,
-    FactoryGirl\Provider\Doctrine\ORM\Locking\LockException,
-    FactoryGirl\Provider\Doctrine\ORM\QueryBuilder;
+use Doctrine\DBAL\LockMode;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\OptimisticLockException;
+use FactoryGirl\Provider\Doctrine\ORM\Locking\VersionLockable;
+use FactoryGirl\Provider\Doctrine\ORM\Locking\TableLock;
+use FactoryGirl\Provider\Doctrine\ORM\Locking\LockException;
+use FactoryGirl\Provider\Doctrine\ORM\QueryBuilder;
 
 class Repository extends EntityRepository
 {
     /**
-     * @param \Doctrine\ORM\QueryBuilder $builder 
+     * @param \Doctrine\ORM\QueryBuilder $builder
      * @return mixed result
      */
     protected function getQueryResult($builder)
@@ -22,25 +22,25 @@ class Repository extends EntityRepository
     }
     
     /**
-     * @param \Doctrine\ORM\QueryBuilder $builder 
+     * @param \Doctrine\ORM\QueryBuilder $builder
      * @param callback(Exception) $fallback optional
      * @return object | null result or return value from fallback
      */
     protected function getSingleQueryResult($builder, $fallback = null)
     {
-        return $this->attemptQuery(function() use($builder) {
+        return $this->attemptQuery(function () use ($builder) {
             return $builder->getQuery()->getSingleResult();
         }, $fallback);
     }
     
     /**
-     * @param \Doctrine\ORM\QueryBuilder $builder 
+     * @param \Doctrine\ORM\QueryBuilder $builder
      * @param callback(Exception) $fallback optional
      * @return object | null result or return value from fallback
      */
     protected function getSingleScalarQueryResult($builder, $fallback = null)
     {
-        return $this->attemptQuery(function() use($builder) {
+        return $this->attemptQuery(function () use ($builder) {
             return $builder->getQuery()->getSingleScalarResult();
         }, $fallback);
     }
@@ -48,7 +48,7 @@ class Repository extends EntityRepository
     /**
      * Guards against NoResultException and NonUniqueResultException within a
      * callback. Uses a fallback callback in case an exception does occur.
-     * 
+     *
      * @param callback $do
      * @param callback $fallback optional
      * @return mixed
@@ -56,7 +56,8 @@ class Repository extends EntityRepository
     private function attemptQuery($do, $fallback = null)
     {
         if (null === $fallback) {
-            $fallback = function() {};
+            $fallback = function () {
+            };
         }
         try {
             return $do();
@@ -71,7 +72,7 @@ class Repository extends EntityRepository
      * Create a query builder, perform the given operation on it and return the
      * query builder. The operation callback receives the query builder and its
      * associated expression builder as arguments.
-     * 
+     *
      * @param callback(QueryBuilder, Doctrine\ORM\Query\Expr) $do
      * @return QueryBuilder
      */
@@ -85,7 +86,7 @@ class Repository extends EntityRepository
     /**
      * Create a query builder. Override this in a child class to create a
      * builder of the appropriate type.
-     * 
+     *
      * @return QueryBuilder
      */
     protected function getBaseQueryBuilder()
@@ -147,7 +148,7 @@ class Repository extends EntityRepository
     public function useWithLock($id, $lockMode, $callback)
     {
         $entityName = $this->getEntityName();
-        return $this->transaction(function($em, $self) use($id, $lockMode, $callback, $entityName) {
+        return $this->transaction(function ($em, $self) use ($id, $lockMode, $callback, $entityName) {
             $entity = $self->find($id, $lockMode);
             if (empty($entity)) {
                 $message = \sprintf("Could not lock %s entity by id %d: entity not found", $entityName, $id);
@@ -188,7 +189,7 @@ class Repository extends EntityRepository
      */
     public function useWithPessimisticVersionLock($id, $lockVersion, $callback)
     {
-        return $this->useWithPessimisticWriteLock($id, function(VersionLockable $entity, EntityManager $em, $self) use($lockVersion, $callback) {
+        return $this->useWithPessimisticWriteLock($id, function (VersionLockable $entity, EntityManager $em, $self) use ($lockVersion, $callback) {
             if ($entity->getVersion() !== $lockVersion) {
                 // FIXME: This isn't the appropriate exception type.
                 throw OptimisticLockException::lockFailedVersionMissmatch($entity, $lockVersion, $entity->getVersion());
@@ -209,7 +210,7 @@ class Repository extends EntityRepository
     /**
      * Attempt to acquire a table level lock in MySQL for the duration of the
      * given transaction. IS NOT IN ANY WAY GUARANTEED TO WORK.
-     * 
+     *
      * @see TableLock
      * @param int $lockMode a TableLockMode constant
      * @param callback $transaction

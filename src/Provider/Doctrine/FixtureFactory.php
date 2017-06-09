@@ -1,14 +1,14 @@
 <?php
 namespace FactoryGirl\Provider\Doctrine;
 
-use Doctrine\ORM\EntityManager,
-    Doctrine\Common\Collections\Collection,
-    Doctrine\Common\Collections\ArrayCollection,
-    Exception;
+use Doctrine\ORM\EntityManager;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Exception;
 
 /**
  * Creates Doctrine entities for use in tests.
- * 
+ *
  * See the README file for a tutorial.
  */
 class FixtureFactory
@@ -68,10 +68,10 @@ class FixtureFactory
     
     /**
      * Get an entity and its dependencies.
-     * 
+     *
      * Whether the entity is new or not depends on whether you've created
      * a singleton with the entity name. See `getAsSingleton()`.
-     * 
+     *
      * If you've called `persistOnGet()` then the entity is also persisted.
      */
     public function get($name, array $fieldOverrides = array())
@@ -159,10 +159,11 @@ class FixtureFactory
         }
     }
 
-    protected function createCollectionFrom($array = array()) {
-        if(is_array($array)) {
+    protected function createCollectionFrom($array = array())
+    {
+        if (is_array($array)) {
             return new ArrayCollection($array);
-        } 
+        }
 
         return new ArrayCollection();
     }
@@ -179,7 +180,7 @@ class FixtureFactory
     
     /**
      * A shorthand combining `get()` and `setSingleton()`.
-     * 
+     *
      * It's illegal to call this if `$name` already has a singleton.
      */
     public function getAsSingleton($name, array $fieldOverrides = array())
@@ -193,7 +194,7 @@ class FixtureFactory
     
     /**
      * Sets `$entity` to be the singleton for `$name`.
-     * 
+     *
      * This causes `get($name)` to return `$entity`.
      */
     public function setSingleton($name, $entity)
@@ -203,7 +204,7 @@ class FixtureFactory
     
     /**
      * Unsets the singleton for `$name`.
-     * 
+     *
      * This causes `get($name)` to return new entities again.
      */
     public function unsetSingleton($name)
@@ -213,9 +214,9 @@ class FixtureFactory
     
     /**
      * Defines how to create a default entity of type `$name`.
-     * 
+     *
      * See the readme for a tutorial.
-     * 
+     *
      * @return FixtureFactory
      */
     public function defineEntity($name, array $fieldDefs = array(), array $config = array())
@@ -254,7 +255,8 @@ class FixtureFactory
         return $this->entityNamespace . '\\' . $name;
     }
     
-    protected function updateCollectionSideOfAssocation($entityBeingCreated, $metadata, $fieldName, $value) {
+    protected function updateCollectionSideOfAssocation($entityBeingCreated, $metadata, $fieldName, $value)
+    {
         $assoc = $metadata->getAssociationMapping($fieldName);
         $inverse = $assoc['inversedBy'];
         if ($inverse) {

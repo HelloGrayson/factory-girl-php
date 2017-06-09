@@ -12,7 +12,7 @@ class TableLockMode
      */
     public static function toString($mode)
     {
-        switch($mode) {
+        switch ($mode) {
             case self::READ: return 'READ';
             case self::WRITE: return 'WRITE';
         }

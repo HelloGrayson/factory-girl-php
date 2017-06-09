@@ -33,7 +33,7 @@ class ReferenceTest extends TestCase
      * @test
      */
     public function referencedObjectsShouldBeNullable()
-    {        
+    {
         $person = $this->factory->get('Person', array('spaceShip' => null));
         
         $this->assertNull($person->getSpaceShip());

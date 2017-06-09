@@ -35,5 +35,4 @@ class PersistingTest extends TestCase
             ->getQuery();
         $this->assertEmpty($q->getResult());
     }
-    
 }
