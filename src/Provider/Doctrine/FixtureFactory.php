@@ -76,6 +76,17 @@ class FixtureFactory
      */
     public function get($name, array $fieldOverrides = array())
     {
+        $ent = $this->build($name, $fieldOverrides);
+
+        if ($this->persist) {
+            $this->em->persist($ent);
+        }
+
+        return $ent;
+    }
+
+    public function build($name, array $fieldOverrides = array())
+    {
         if (isset($this->singletons[$name])) {
             return $this->singletons[$name];
         }
@@ -100,12 +111,19 @@ class FixtureFactory
         if (isset($config['afterCreate'])) {
             $config['afterCreate']($ent, $fieldValues);
         }
-        
-        
-        if ($this->persist) {
-            $this->em->persist($ent);
-        }
-        
+
+        return $ent;
+    }
+
+    /**
+     * Like get(), but always persists the entity
+     */
+    public function create($name, array $fieldOverrides = array())
+    {
+        $ent = $this->build($name, $fieldOverrides);
+
+        $this->em->persist($ent);
+
         return $ent;
     }
 
