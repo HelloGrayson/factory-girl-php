@@ -15,7 +15,7 @@ class PersistingTest extends TestCase
         $this->em->flush();
         
         $this->assertNotNull($ss->getId());
-        $this->assertEquals($ss, $this->em->find('FactoryGirl\Tests\Provider\Doctrine\Fixtures\TestEntity\SpaceShip', $ss->getId()));
+        $this->assertTrue($this->em->contains($ss));
     }
     
     /**
@@ -28,11 +28,6 @@ class PersistingTest extends TestCase
         $this->em->flush();
         
         $this->assertNull($ss->getId());
-        $q = $this->em
-            ->createQueryBuilder()
-            ->select('ss')
-            ->from('FactoryGirl\Tests\Provider\Doctrine\Fixtures\TestEntity\SpaceShip', 'ss')
-            ->getQuery();
-        $this->assertEmpty($q->getResult());
+        $this->assertFalse($this->em->contains($ss));
     }
 }
