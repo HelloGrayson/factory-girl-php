@@ -27,6 +27,32 @@ class PersistingTest extends TestCase
     /**
      * @test
      */
+    public function createAlwaysPersists()
+    {
+        $ss = $this->factory->create('SpaceShip');
+        $this->em->flush();
+
+        $this->assertNotNull($ss->getId());
+        $this->assertTrue($this->em->contains($ss));
+    }
+
+    /**
+     * @test
+     */
+    public function buildNeverPersists()
+    {
+        $this->factory->persistOnGet();
+
+        $ss = $this->factory->build('SpaceShip');
+        $this->em->flush();
+
+        $this->assertNull($ss->getId());
+        $this->assertFalse($this->em->contains($ss));
+    }
+
+    /**
+     * @test
+     */
     public function doesNotPersistByDefault()
     {
         $ss = $this->factory->get('SpaceShip');
