@@ -3,8 +3,9 @@
 namespace FactoryGirl\Tests\Provider\Doctrine\ORM;
 
 use FactoryGirl\Provider\Doctrine\DateIntervalHelper;
+use PHPUnit\Framework;
 
-class DateIntervalHelperTest extends \PHPUnit_Framework_TestCase
+class DateIntervalHelperTest extends Framework\TestCase
 {
     /**
      * @dataProvider providerInvalidIntegerish
@@ -15,7 +16,8 @@ class DateIntervalHelperTest extends \PHPUnit_Framework_TestCase
     {
         $helper = new DateIntervalHelper(new \DateTime());
         
-        $this->setExpectedException('InvalidArgumentException', sprintf(
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage(sprintf(
             'Expected integer or integerish string, got "%s" instead.',
             is_object($years) ? get_class($years) : gettype($years)
         ));
@@ -32,7 +34,8 @@ class DateIntervalHelperTest extends \PHPUnit_Framework_TestCase
     {
         $helper = new DateIntervalHelper(new \DateTime());
         
-        $this->setExpectedException('InvalidArgumentException', sprintf(
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage(sprintf(
             'Expected integer or integerish string, got "%s" instead.',
             is_object($months) ? get_class($months) : gettype($months)
         ));
@@ -49,7 +52,8 @@ class DateIntervalHelperTest extends \PHPUnit_Framework_TestCase
     {
         $helper = new DateIntervalHelper(new \DateTime());
         
-        $this->setExpectedException('InvalidArgumentException', sprintf(
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage(sprintf(
             'Expected integer or integerish string, got "%s" instead.',
             is_object($days) ? get_class($days) : gettype($days)
         ));

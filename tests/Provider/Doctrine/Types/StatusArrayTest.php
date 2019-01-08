@@ -4,6 +4,7 @@ namespace FactoryGirl\Tests\Provider\Doctrine\Types;
 
 use FactoryGirl\Tests\Provider\Doctrine\Fixtures\TestCase;
 use Doctrine\DBAL\Types\Type;
+use Doctrine\DBAL\Types\ConversionException;
 
 Type::addType('statusarray', 'FactoryGirl\Provider\Doctrine\DBAL\Types\StatusArrayType');
 
@@ -43,10 +44,11 @@ class StatusArrayTest extends TestCase
     
     /**
      * @test
-     * @expectedException Doctrine\DBAL\Types\ConversionException
      */
     public function nonArrayOrNotNullShouldFailDatabaseConversion()
     {
+        $this->expectException(ConversionException::class);
+
         $value = 'lussenhof';
         $this->type->convertToDatabaseValue($value, $this->platform);
     }
@@ -79,11 +81,12 @@ class StatusArrayTest extends TestCase
     
     /**
      * @test
-     * @expectedException Doctrine\DBAL\Types\ConversionException
      * @dataProvider provideStupidValues
      */
     public function invalidCharactersShouldFailDatabaseConversion($stupidValue)
     {
+        $this->expectException(ConversionException::class);
+
         $value = array($stupidValue);
         $this->type->convertToDatabaseValue($value, $this->platform);
     }

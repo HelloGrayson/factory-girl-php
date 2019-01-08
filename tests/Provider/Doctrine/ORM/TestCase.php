@@ -2,7 +2,7 @@
 
 namespace FactoryGirl\Tests\Provider\Doctrine\ORM;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework;
 use FactoryGirl\Tests\Provider\Doctrine\TestDb;
 
 /**
@@ -12,7 +12,7 @@ use FactoryGirl\Tests\Provider\Doctrine\TestDb;
  * @author     Mikko Hirvonen <mikko.petteri.hirvonen@gmail.com>
  * @license    http://www.opensource.org/licenses/BSD-3-Clause New BSD License
  */
-abstract class TestCase extends PHPUnit_Framework_TestCase
+abstract class TestCase extends Framework\TestCase
 {
     /**
      * @var TestDb
