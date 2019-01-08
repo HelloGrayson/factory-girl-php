@@ -60,7 +60,7 @@ class TestDb
     {
         $em = EntityManager::create(
             $this->connectionOptions,
-                                    $this->doctrineConfig
+            $this->doctrineConfig
         );
         $this->createSchema($em);
 
