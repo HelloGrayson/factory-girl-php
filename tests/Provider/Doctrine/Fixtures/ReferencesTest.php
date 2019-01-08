@@ -7,7 +7,7 @@ use FactoryGirl\Tests\Provider\Doctrine\Fixtures\TestEntity;
 
 class ReferencesTest extends TestCase
 {
-    public function setUp()
+    protected function setUp()
     {
         parent::setUp();
 

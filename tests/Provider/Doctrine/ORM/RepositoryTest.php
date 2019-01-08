@@ -19,7 +19,7 @@ class RepositoryTest extends TestCase
      */
     private $repository;
 
-    public function setUp()
+    protected function setUp()
     {
         parent::setUp();
 

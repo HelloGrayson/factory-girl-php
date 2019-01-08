@@ -5,7 +5,7 @@ use FactoryGirl\Provider\Doctrine\FieldDef;
 
 class ReferenceTest extends TestCase
 {
-    public function setUp()
+    protected function setUp()
     {
         parent::setUp();
         
