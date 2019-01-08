@@ -3,7 +3,7 @@ language: php
 matrix:
   include:
     - php: 7.1
-      env: COMPOSER_FLAGS=--prefer-lowest
+      env: COMPOSER_FLAGS=--prefer-lowest WITH_CS=true
     - php: 7.1
     - php: 7.2
       env: COMPOSER_FLAGS=--prefer-lowest
@@ -25,4 +25,5 @@ install:
 
 script:
   - composer validate
+  - if [[ "$WITH_CS" == "true" ]]; then ./vendor/bin/php-cs-fixer fix --diff --dry-run --verbose; fi
   - ./vendor/bin/phpunit --testdox
