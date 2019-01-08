@@ -35,11 +35,10 @@ class SingletonTest extends TestCase
     {
         $this->factory->defineEntity('SpaceShip', array('name' => 'Alpha'));
         $this->factory->getAsSingleton('SpaceShip');
-        
-        $self = $this;
-        $this->assertThrows(function () use ($self) {
-            $self->factory->getAsSingleton('SpaceShip');
-        });
+
+        $this->expectException(\Exception::class);
+
+        $this->factory->getAsSingleton('SpaceShip');
     }
     
     //TODO: should it be an error to get() a singleton with overrides?

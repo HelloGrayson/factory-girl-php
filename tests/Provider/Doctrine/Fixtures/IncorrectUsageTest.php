@@ -9,9 +9,10 @@ class IncorrectUsageTest extends TestCase
     public function throwsWhenTryingToDefineTheSameEntityTwice()
     {
         $factory = $this->factory->defineEntity('SpaceShip');
-        $this->assertThrows(function () use ($factory) {
-            $factory->defineEntity('SpaceShip');
-        });
+        
+        $this->expectException(\Exception::class);
+        
+        $factory->defineEntity('SpaceShip');
     }
     
     /**
@@ -19,10 +20,9 @@ class IncorrectUsageTest extends TestCase
      */
     public function throwsWhenTryingToDefineEntitiesThatAreNotEvenClasses()
     {
-        $self = $this;
-        $this->assertThrows(function () use ($self) {
-            $self->factory->defineEntity('NotAClass');
-        });
+        $this->expectException(\Exception::class);
+
+        $this->factory->defineEntity('NotAClass');
     }
     
     /**
@@ -31,11 +31,10 @@ class IncorrectUsageTest extends TestCase
     public function throwsWhenTryingToDefineEntitiesThatAreNotEntities()
     {
         $this->assertTrue(class_exists('FactoryGirl\Tests\Provider\Doctrine\Fixtures\TestEntity\NotAnEntity', true));
+
+        $this->expectException(\Exception::class);
         
-        $self = $this;
-        $this->assertThrows(function () use ($self) {
-            $self->factory->defineEntity('NotAnEntity');
-        });
+        $this->factory->defineEntity('NotAnEntity');
     }
     
     /**
@@ -43,12 +42,11 @@ class IncorrectUsageTest extends TestCase
      */
     public function throwsWhenTryingToDefineNonexistentFields()
     {
-        $self = $this;
-        $this->assertThrows(function () use ($self) {
-            $self->factory->defineEntity('SpaceShip', array(
-                'pieType' => 'blueberry'
-            ));
-        });
+        $this->expectException(\Exception::class);
+        
+        $this->factory->defineEntity('SpaceShip', array(
+            'pieType' => 'blueberry'
+        ));
     }
     
     /**
@@ -57,13 +55,12 @@ class IncorrectUsageTest extends TestCase
     public function throwsWhenTryingToGiveNonexistentFieldsWhileConstructing()
     {
         $this->factory->defineEntity('SpaceShip', array('name' => 'Alpha'));
-        
-        $self = $this;
-        $this->assertThrows(function () use ($self) {
-            $self->factory->get('SpaceShip', array(
-                'pieType' => 'blueberry'
-            ));
-        });
+
+        $this->expectException(\Exception::class);
+
+        $this->factory->get('SpaceShip', array(
+            'pieType' => 'blueberry'
+        ));
     }
 
     /**
@@ -73,9 +70,8 @@ class IncorrectUsageTest extends TestCase
     {
         $this->factory->defineEntity('SpaceShip');
 
-        $self = $this;
-        $this->assertThrows(function () use ($self) {
-            $self->factory->getList('SpaceShip', array(), 0);
-        });
+        $this->expectException(\Exception::class);
+
+        $this->factory->getList('SpaceShip', array(), 0);
     }
 }
