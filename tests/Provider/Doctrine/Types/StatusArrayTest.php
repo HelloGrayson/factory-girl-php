@@ -28,7 +28,7 @@ class StatusArrayTest extends TestCase
      */
     public function getNameShouldReturnExpectedName()
     {
-        $this->assertEquals('statusarray', $this->type->getName());
+        $this->assertSame('statusarray', $this->type->getName());
     }
     
     

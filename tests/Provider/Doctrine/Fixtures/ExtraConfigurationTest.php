@@ -17,7 +17,7 @@ class ExtraConfigurationTest extends TestCase
         ));
         $ss = $this->factory->get('SpaceShip');
         
-        $this->assertEquals("Foo-Foo", $ss->getName());
+        $this->assertSame("Foo-Foo", $ss->getName());
     }
     
     /**
@@ -35,6 +35,6 @@ class ExtraConfigurationTest extends TestCase
         $ss = $this->factory->get('SpaceShip', array('name' => 'Xoo'));
         
         $this->assertTrue($ss->constructorWasCalled());
-        $this->assertEquals('XooMaster', $ss->getName());
+        $this->assertSame('XooMaster', $ss->getName());
     }
 }

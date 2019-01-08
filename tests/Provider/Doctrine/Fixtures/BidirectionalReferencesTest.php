@@ -18,7 +18,7 @@ class BidirectionalReferencesTest extends TestCase
         $person = $this->factory->get('Person');
         $ship = $person->getSpaceShip();
         
-        $this->assertTrue($ship->getCrew()->contains($person));
+        $this->assertContains($person, $ship->getCrew());
     }
     
     /**
@@ -31,7 +31,7 @@ class BidirectionalReferencesTest extends TestCase
         ));
         $this->factory->defineEntity('Person');
         
-        $this->assertTrue($this->factory->get('Badge')->getOwner() instanceof TestEntity\Person);
+        $this->assertInstanceOf(TestEntity\Person::class, $this->factory->get('Badge')->getOwner());
     }
     
     /**
@@ -48,7 +48,7 @@ class BidirectionalReferencesTest extends TestCase
         $p1 = $this->factory->get('Person');
         $p2 = $this->factory->get('Person');
         
-        $this->assertTrue($ship->getCrew()->contains($p1));
-        $this->assertTrue($ship->getCrew()->contains($p2));
+        $this->assertContains($p1, $ship->getCrew());
+        $this->assertContains($p2, $ship->getCrew());
     }
 }

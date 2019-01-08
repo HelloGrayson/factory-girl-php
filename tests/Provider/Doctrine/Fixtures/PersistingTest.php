@@ -15,7 +15,7 @@ class PersistingTest extends TestCase
         $this->em->flush();
         
         $this->assertNotNull($ss->getId());
-        $this->assertEquals($ss, $this->em->find('FactoryGirl\Tests\Provider\Doctrine\Fixtures\TestEntity\SpaceShip', $ss->getId()));
+        $this->assertSame($ss, $this->em->find('FactoryGirl\Tests\Provider\Doctrine\Fixtures\TestEntity\SpaceShip', $ss->getId()));
     }
     
     /**

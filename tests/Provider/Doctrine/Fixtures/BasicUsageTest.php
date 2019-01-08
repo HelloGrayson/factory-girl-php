@@ -17,7 +17,7 @@ class BasicUsageTest extends TestCase
             ))
             ->get('SpaceShip');
         
-        $this->assertEquals('My BattleCruiser', $ss->getName());
+        $this->assertSame('My BattleCruiser', $ss->getName());
     }
     
     /**
@@ -32,9 +32,9 @@ class BasicUsageTest extends TestCase
             }
         ));
         
-        $this->assertEquals('M/S Star', $this->factory->get('SpaceShip')->getName());
+        $this->assertSame('M/S Star', $this->factory->get('SpaceShip')->getName());
         $name = "Superstar";
-        $this->assertEquals('M/S Superstar', $this->factory->get('SpaceShip')->getName());
+        $this->assertSame('M/S Superstar', $this->factory->get('SpaceShip')->getName());
     }
     
     /**
@@ -47,7 +47,7 @@ class BasicUsageTest extends TestCase
                 'name' => 'My BattleCruiser'
             ))
             ->get('SpaceShip', array('name' => 'My CattleBruiser'));
-        $this->assertEquals('My CattleBruiser', $ss->getName());
+        $this->assertSame('My CattleBruiser', $ss->getName());
     }
 
     /**
@@ -58,7 +58,7 @@ class BasicUsageTest extends TestCase
         $ss = $this->factory
             ->defineEntity('SpaceStation')
             ->get('SpaceStation');
-        $this->assertEquals('Babylon5', $ss->getName());
+        $this->assertSame('Babylon5', $ss->getName());
     }
     
     /**
@@ -83,8 +83,8 @@ class BasicUsageTest extends TestCase
             ))
             ->get('SpaceShip');
         
-        $this->assertTrue($ss->getCrew() instanceof ArrayCollection);
-        $this->assertTrue($ss->getCrew()->isEmpty());
+        $this->assertInstanceOf(ArrayCollection::class, $ss->getCrew());
+        $this->assertEmpty($ss->getCrew());
     }
 
     /**
@@ -105,7 +105,7 @@ class BasicUsageTest extends TestCase
             'crew' => array($p1, $p2)
         ));
         
-        $this->assertTrue($ship->getCrew() instanceof ArrayCollection);
+        $this->assertInstanceOf(ArrayCollection::class, $ship->getCrew());
         $this->assertTrue($ship->getCrew()->contains($p1));
         $this->assertTrue($ship->getCrew()->contains($p2));
     }
@@ -127,14 +127,14 @@ class BasicUsageTest extends TestCase
         $this->factory->defineEntity('SpaceShip');
         $this->factory->defineEntity('Person\User');
 
-        $this->assertEquals(
+        $this->assertInstanceOf(
             'FactoryGirl\Tests\Provider\Doctrine\Fixtures\TestEntity\SpaceShip',
-            get_class($this->factory->get('SpaceShip'))
+            $this->factory->get('SpaceShip')
         );
 
-        $this->assertEquals(
+        $this->assertInstanceOf(
             'FactoryGirl\Tests\Provider\Doctrine\Fixtures\TestEntity\Person\User',
-            get_class($this->factory->get('Person\User'))
+            $this->factory->get('Person\User')
         );
     }
 
@@ -147,11 +147,11 @@ class BasicUsageTest extends TestCase
             '\FactoryGirl\Tests\Provider\Doctrine\Fixtures\TestAnotherEntity\Artist'
         );
 
-        $this->assertEquals(
+        $this->assertInstanceOf(
             'FactoryGirl\Tests\Provider\Doctrine\Fixtures\TestAnotherEntity\Artist',
-            get_class($this->factory->get(
+            $this->factory->get(
                 '\FactoryGirl\Tests\Provider\Doctrine\Fixtures\TestAnotherEntity\Artist'
-            ))
+            )
         );
     }
 
