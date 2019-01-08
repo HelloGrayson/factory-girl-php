@@ -2,14 +2,13 @@
 
 namespace FactoryGirl\Tests\Provider\Doctrine\Fixtures;
 
-use PHPUnit_Framework_TestCase;
-use PHPUnit_Framework_Error;
+use PHPUnit\Framework;
 use FactoryGirl\Tests\Provider\Doctrine\TestDb;
 use FactoryGirl\Provider\Doctrine\FixtureFactory;
 use Doctrine\ORM\EntityManager;
 use Exception;
 
-abstract class TestCase extends PHPUnit_Framework_TestCase
+abstract class TestCase extends Framework\TestCase
 {
     /**
      * @var TestDb
@@ -58,7 +57,7 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
         if (!isset($e)) {
             $this->fail("Expected $exceptionType but nothing was thrown");
         }
-        if ($e instanceof PHPUnit_Framework_Error) {
+        if ($e instanceof Framework\Error\Error) {
             $this->fail('Expected exception but got a PHP error: ' . $e->getMessage());
         }
         if (!($e instanceof $exceptionType)) {
