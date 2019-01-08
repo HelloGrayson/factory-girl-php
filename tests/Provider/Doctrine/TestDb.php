@@ -58,8 +58,10 @@ class TestDb
      */
     public function createEntityManager()
     {
-        $em = EntityManager::create($this->connectionOptions,
-                                    $this->doctrineConfig);
+        $em = EntityManager::create(
+            $this->connectionOptions,
+                                    $this->doctrineConfig
+        );
         $this->createSchema($em);
 
         return $em;

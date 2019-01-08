@@ -36,9 +36,11 @@ class TimeTest extends TestCase
         $time->add($interval);
         $this->assertEquals(
             $time->getTimestamp(),
-            FieldDef::future()->years(3)->months(1)->days(2)->get());
+            FieldDef::future()->years(3)->months(1)->days(2)->get()
+        );
         $this->assertEquals(
             $time->format('d-m-y'),
-            FieldDef::future()->years(3)->months(1)->days(2)->get(DateIntervalHelper::DATE_STRING));
+            FieldDef::future()->years(3)->months(1)->days(2)->get(DateIntervalHelper::DATE_STRING)
+        );
     }
 }
