@@ -44,25 +44,4 @@ abstract class TestCase extends Framework\TestCase
         $this->factory = new FixtureFactory($this->em);
         $this->factory->setEntityNamespace('FactoryGirl\Tests\Provider\Doctrine\Fixtures\TestEntity');
     }
-    
-    /**
-     * @return Exception
-     */
-    protected function assertThrows($func, $exceptionType = '\Exception')
-    {
-        try {
-            $func();
-        } catch (Exception $e) {
-        }
-        if (!isset($e)) {
-            $this->fail("Expected $exceptionType but nothing was thrown");
-        }
-        if ($e instanceof Framework\Error\Error) {
-            $this->fail('Expected exception but got a PHP error: ' . $e->getMessage());
-        }
-        if (!($e instanceof $exceptionType)) {
-            $this->fail("Excpected $exceptionType but " . get_class($e) . " was thrown");
-        }
-        return $e;
-    }
 }
