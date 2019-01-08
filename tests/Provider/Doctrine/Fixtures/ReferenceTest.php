@@ -10,10 +10,10 @@ class ReferenceTest extends TestCase
         parent::setUp();
         
         $this->factory->defineEntity('SpaceShip');
-        $this->factory->defineEntity('Person', array(
+        $this->factory->defineEntity('Person', [
             'name' => 'Eve',
             'spaceShip' => FieldDef::reference('SpaceShip')
-        ));
+        ]);
     }
     
     /**
@@ -34,7 +34,7 @@ class ReferenceTest extends TestCase
      */
     public function referencedObjectsShouldBeNullable()
     {
-        $person = $this->factory->get('Person', array('spaceShip' => null));
+        $person = $this->factory->get('Person', ['spaceShip' => null]);
         
         $this->assertNull($person->getSpaceShip());
     }

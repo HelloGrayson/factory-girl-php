@@ -12,9 +12,9 @@ class BasicUsageTest extends TestCase
     public function acceptsConstantValuesInEntityDefinitions()
     {
         $ss = $this->factory
-            ->defineEntity('SpaceShip', array(
+            ->defineEntity('SpaceShip', [
                 'name' => 'My BattleCruiser'
-            ))
+            ])
             ->get('SpaceShip');
         
         $this->assertSame('My BattleCruiser', $ss->getName());
@@ -26,11 +26,11 @@ class BasicUsageTest extends TestCase
     public function acceptsGeneratorFunctionsInEntityDefinitions()
     {
         $name = "Star";
-        $this->factory->defineEntity('SpaceShip', array(
+        $this->factory->defineEntity('SpaceShip', [
             'name' => function () use (&$name) {
                 return "M/S $name";
             }
-        ));
+        ]);
         
         $this->assertSame('M/S Star', $this->factory->get('SpaceShip')->getName());
         $name = "Superstar";
@@ -43,10 +43,10 @@ class BasicUsageTest extends TestCase
     public function valuesCanBeOverriddenAtCreationTime()
     {
         $ss = $this->factory
-            ->defineEntity('SpaceShip', array(
+            ->defineEntity('SpaceShip', [
                 'name' => 'My BattleCruiser'
-            ))
-            ->get('SpaceShip', array('name' => 'My CattleBruiser'));
+            ])
+            ->get('SpaceShip', ['name' => 'My CattleBruiser']);
         $this->assertSame('My CattleBruiser', $ss->getName());
     }
 
@@ -67,7 +67,7 @@ class BasicUsageTest extends TestCase
     public function doesNotCallTheConstructorOfTheEntity()
     {
         $ss = $this->factory
-            ->defineEntity('SpaceShip', array())
+            ->defineEntity('SpaceShip', [])
             ->get('SpaceShip');
         $this->assertFalse($ss->constructorWasCalled());
     }
@@ -78,9 +78,9 @@ class BasicUsageTest extends TestCase
     public function instantiatesCollectionAssociationsToBeEmptyCollectionsWhenUnspecified()
     {
         $ss = $this->factory
-            ->defineEntity('SpaceShip', array(
+            ->defineEntity('SpaceShip', [
                 'name' => 'Battlestar Galaxy'
-            ))
+            ])
             ->get('SpaceShip');
         
         $this->assertInstanceOf(ArrayCollection::class, $ss->getCrew());
@@ -93,17 +93,17 @@ class BasicUsageTest extends TestCase
     public function arrayElementsAreMappedToCollectionAsscociationFields()
     {
         $this->factory->defineEntity('SpaceShip');
-        $this->factory->defineEntity('Person', array(
+        $this->factory->defineEntity('Person', [
             'spaceShip' => FieldDef::reference('SpaceShip')
-        ));
+        ]);
 
         $p1 = $this->factory->get('Person');
         $p2 = $this->factory->get('Person');
 
-        $ship = $this->factory->get('SpaceShip', array(
+        $ship = $this->factory->get('SpaceShip', [
             'name' => 'Battlestar Galaxy',
-            'crew' => array($p1, $p2)
-        ));
+            'crew' => [$p1, $p2]
+        ]);
         
         $this->assertInstanceOf(ArrayCollection::class, $ship->getCrew());
         $this->assertTrue($ship->getCrew()->contains($p1));
@@ -172,6 +172,6 @@ class BasicUsageTest extends TestCase
     {
         $this->factory->defineEntity('SpaceShip');
 
-        $this->assertCount(5, $this->factory->getList('SpaceShip', array(), 5));
+        $this->assertCount(5, $this->factory->getList('SpaceShip', [], 5));
     }
 }

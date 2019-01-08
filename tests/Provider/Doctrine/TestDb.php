@@ -45,10 +45,10 @@ class TestDb
         $config->setProxyNamespace($proxyNamespace);
         $config->setAutoGenerateProxyClasses(true);
 
-        $this->connectionOptions = array(
+        $this->connectionOptions = [
             'driver' => 'pdo_sqlite',
             'path'   => ':memory:'
-        );
+        ];
 
         $this->doctrineConfig = $config;
     }

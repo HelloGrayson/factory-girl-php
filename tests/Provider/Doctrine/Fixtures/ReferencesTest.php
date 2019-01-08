@@ -11,13 +11,13 @@ class ReferencesTest extends TestCase
     {
         parent::setUp();
 
-        $this->factory->defineEntity('SpaceShip', array(
+        $this->factory->defineEntity('SpaceShip', [
             'crew' => FieldDef::references('Person')
-        ));
+        ]);
 
-        $this->factory->defineEntity('Person', array(
+        $this->factory->defineEntity('Person', [
             'name' => 'Eve',
-        ));
+        ]);
     }
 
     /**
@@ -43,9 +43,9 @@ class ReferencesTest extends TestCase
         $count = 5;
 
         /** @var TestEntity\SpaceShip $spaceShip */
-        $spaceShip = $this->factory->get('SpaceShip', array(
-            'crew' => $this->factory->getList('Person', array(), $count),
-        ));
+        $spaceShip = $this->factory->get('SpaceShip', [
+            'crew' => $this->factory->getList('Person', [], $count),
+        ]);
 
         $crew = $spaceShip->getCrew();
 
@@ -60,9 +60,9 @@ class ReferencesTest extends TestCase
     public function referencedObjectsShouldBeNullable()
     {
         /** @var TestEntity\SpaceShip $spaceShip */
-        $spaceShip = $this->factory->get('SpaceShip', array(
+        $spaceShip = $this->factory->get('SpaceShip', [
             'crew' => null,
-        ));
+        ]);
 
         $crew = $spaceShip->getCrew();
 

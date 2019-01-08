@@ -28,7 +28,7 @@ class EntityDef
         $this->name = $name;
         $this->entityType = $type;
         $this->metadata = $em->getClassMetadata($type);
-        $this->fieldDefs = array();
+        $this->fieldDefs = [];
         $this->config = $config;
         
         $this->readFieldDefs($fieldDefs);

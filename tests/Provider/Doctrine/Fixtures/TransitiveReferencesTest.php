@@ -8,12 +8,12 @@ class TransitiveReferencesTest extends TestCase
 {
     private function simpleSetup()
     {
-        $this->factory->defineEntity('Person', array(
+        $this->factory->defineEntity('Person', [
             'spaceShip' => FieldDef::reference('SpaceShip'),
-        ));
-        $this->factory->defineEntity('Badge', array(
+        ]);
+        $this->factory->defineEntity('Badge', [
             'owner' => FieldDef::reference('Person')
-        ));
+        ]);
         $this->factory->defineEntity('SpaceShip');
     }
     

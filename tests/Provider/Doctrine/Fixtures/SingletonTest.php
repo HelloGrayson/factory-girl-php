@@ -23,7 +23,7 @@ class SingletonTest extends TestCase
     {
         $this->factory->defineEntity('SpaceShip');
         
-        $ss = $this->factory->getAsSingleton('SpaceShip', array('name' => 'Beta'));
+        $ss = $this->factory->getAsSingleton('SpaceShip', ['name' => 'Beta']);
         $this->assertSame('Beta', $ss->getName());
         $this->assertSame('Beta', $this->factory->get('SpaceShip')->getName());
     }
@@ -33,7 +33,7 @@ class SingletonTest extends TestCase
      */
     public function throwsAnErrorWhenCallingGetSingletonTwiceOnTheSameEntity()
     {
-        $this->factory->defineEntity('SpaceShip', array('name' => 'Alpha'));
+        $this->factory->defineEntity('SpaceShip', ['name' => 'Alpha']);
         $this->factory->getAsSingleton('SpaceShip');
 
         $this->expectException(\Exception::class);

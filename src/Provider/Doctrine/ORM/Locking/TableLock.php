@@ -120,12 +120,12 @@ class TableLock
      */
     private function getTableAliasGuesstimates($tableName)
     {
-        return array_unique(array(
+        return array_unique([
             // the default generated alias: the first letter of the table name prepended with a zero
             strtolower(substr($tableName, 0, 1)) . '0',
             // a generic alias used by Doctrine in many cases
             't0'
-        ));
+        ]);
     }
     
     /**
