@@ -29,6 +29,7 @@
         "doctrine/orm": ">=2.2.1,<3.0-dev"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.14.0",
         "phpunit/phpunit": "4.5.0"
     },
     "suggest": {
@@ -43,5 +44,8 @@
         "psr-4": {
             "FactoryGirl\\Tests\\": "tests/"
         }
+    },
+    "scripts": {
+        "cs": "php-cs-fixer fix --diff --verbose"
     }
 }
