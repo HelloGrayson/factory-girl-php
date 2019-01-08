@@ -16,10 +16,10 @@ class SequenceTest extends TestCase
                 return "Alpha $n";
             })
         ));
-        $this->assertEquals('Alpha 1', $this->factory->get('SpaceShip')->getName());
-        $this->assertEquals('Alpha 2', $this->factory->get('SpaceShip')->getName());
-        $this->assertEquals('Alpha 3', $this->factory->get('SpaceShip')->getName());
-        $this->assertEquals('Alpha 4', $this->factory->get('SpaceShip')->getName());
+        $this->assertSame('Alpha 1', $this->factory->get('SpaceShip')->getName());
+        $this->assertSame('Alpha 2', $this->factory->get('SpaceShip')->getName());
+        $this->assertSame('Alpha 3', $this->factory->get('SpaceShip')->getName());
+        $this->assertSame('Alpha 4', $this->factory->get('SpaceShip')->getName());
     }
     
     /**
@@ -30,10 +30,10 @@ class SequenceTest extends TestCase
         $this->factory->defineEntity('SpaceShip', array(
             'name' => FieldDef::sequence("Beta %d")
         ));
-        $this->assertEquals('Beta 1', $this->factory->get('SpaceShip')->getName());
-        $this->assertEquals('Beta 2', $this->factory->get('SpaceShip')->getName());
-        $this->assertEquals('Beta 3', $this->factory->get('SpaceShip')->getName());
-        $this->assertEquals('Beta 4', $this->factory->get('SpaceShip')->getName());
+        $this->assertSame('Beta 1', $this->factory->get('SpaceShip')->getName());
+        $this->assertSame('Beta 2', $this->factory->get('SpaceShip')->getName());
+        $this->assertSame('Beta 3', $this->factory->get('SpaceShip')->getName());
+        $this->assertSame('Beta 4', $this->factory->get('SpaceShip')->getName());
     }
     
     /**
@@ -44,9 +44,9 @@ class SequenceTest extends TestCase
         $this->factory->defineEntity('SpaceShip', array(
             'name' => FieldDef::sequence("Gamma ")
         ));
-        $this->assertEquals('Gamma 1', $this->factory->get('SpaceShip')->getName());
-        $this->assertEquals('Gamma 2', $this->factory->get('SpaceShip')->getName());
-        $this->assertEquals('Gamma 3', $this->factory->get('SpaceShip')->getName());
-        $this->assertEquals('Gamma 4', $this->factory->get('SpaceShip')->getName());
+        $this->assertSame('Gamma 1', $this->factory->get('SpaceShip')->getName());
+        $this->assertSame('Gamma 2', $this->factory->get('SpaceShip')->getName());
+        $this->assertSame('Gamma 3', $this->factory->get('SpaceShip')->getName());
+        $this->assertSame('Gamma 4', $this->factory->get('SpaceShip')->getName());
     }
 }

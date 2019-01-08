@@ -17,12 +17,12 @@ class TimeTest extends TestCase
         $interval = new \DateInterval('P3Y1M2D');
         $interval->invert = 1;
         $time->add($interval);
-        $this->assertEquals(
+        $this->assertSame(
             $time->getTimestamp(),
             FieldDef::past()->years(3)->months(1)->days(2)->get(),
             'Error getting unix timestamp'
         );
-        $this->assertEquals(
+        $this->assertSame(
             $time->format('d-m-y'),
             FieldDef::past()->years(3)->months(1)->days(2)->get(DateIntervalHelper::DATE_STRING),
             'Error getting string'
@@ -34,11 +34,11 @@ class TimeTest extends TestCase
         $time = new \DateTime();
         $interval = new \DateInterval('P3Y1M2D');
         $time->add($interval);
-        $this->assertEquals(
+        $this->assertSame(
             $time->getTimestamp(),
             FieldDef::future()->years(3)->months(1)->days(2)->get()
         );
-        $this->assertEquals(
+        $this->assertSame(
             $time->format('d-m-y'),
             FieldDef::future()->years(3)->months(1)->days(2)->get(DateIntervalHelper::DATE_STRING)
         );
