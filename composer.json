@@ -44,5 +44,8 @@
         "psr-4": {
             "FactoryGirl\\Tests\\": "tests/"
         }
+    },
+    "scripts": {
+        "cs": "php-cs-fixer fix --diff --verbose"
     }
 }
