@@ -30,7 +30,7 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.14.0",
-        "phpunit/phpunit": "4.5.0"
+        "phpunit/phpunit": "^7.5.1"
     },
     "suggest": {
         "fzaninotto/faker": "For generating fake data in entity definitions"
