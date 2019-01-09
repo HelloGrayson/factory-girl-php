@@ -11,11 +11,11 @@ class SequenceTest extends TestCase
      */
     public function sequenceGeneratorCallsAFunctionWithAnIncrementingArgument()
     {
-        $this->factory->defineEntity('SpaceShip', array(
+        $this->factory->defineEntity('SpaceShip', [
             'name' => FieldDef::sequence(function ($n) {
                 return "Alpha $n";
             })
-        ));
+        ]);
         $this->assertSame('Alpha 1', $this->factory->get('SpaceShip')->getName());
         $this->assertSame('Alpha 2', $this->factory->get('SpaceShip')->getName());
         $this->assertSame('Alpha 3', $this->factory->get('SpaceShip')->getName());
@@ -27,9 +27,9 @@ class SequenceTest extends TestCase
      */
     public function sequenceGeneratorCanTakeAPlaceholderString()
     {
-        $this->factory->defineEntity('SpaceShip', array(
+        $this->factory->defineEntity('SpaceShip', [
             'name' => FieldDef::sequence("Beta %d")
-        ));
+        ]);
         $this->assertSame('Beta 1', $this->factory->get('SpaceShip')->getName());
         $this->assertSame('Beta 2', $this->factory->get('SpaceShip')->getName());
         $this->assertSame('Beta 3', $this->factory->get('SpaceShip')->getName());
@@ -41,9 +41,9 @@ class SequenceTest extends TestCase
      */
     public function sequenceGeneratorCanTakeAStringToAppendTo()
     {
-        $this->factory->defineEntity('SpaceShip', array(
+        $this->factory->defineEntity('SpaceShip', [
             'name' => FieldDef::sequence("Gamma ")
-        ));
+        ]);
         $this->assertSame('Gamma 1', $this->factory->get('SpaceShip')->getName());
         $this->assertSame('Gamma 2', $this->factory->get('SpaceShip')->getName());
         $this->assertSame('Gamma 3', $this->factory->get('SpaceShip')->getName());

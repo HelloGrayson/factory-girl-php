@@ -56,26 +56,26 @@ class StatusArrayTest extends TestCase
     
     public function provideStupidValues()
     {
-        return array(
-            array('//'),
-            array('###'),
-            array('lussenhofen%meister'),
-        );
+        return [
+            ['//'],
+            ['###'],
+            ['lussenhofen%meister'],
+        ];
     }
     
     
     public function provideAcceptableValues()
     {
-        return array(
-            array(
+        return [
+            [
                 '[lussen.hofer];[lussen:meister];[1];[563]',
-                array('lussen.hofer', 'lussen:meister', 1, 563),
-            ),
-            array(
+                ['lussen.hofer', 'lussen:meister', 1, 563],
+            ],
+            [
                 '[lussen.hofer]',
-                array('lussen.hofer'),
-            ),
-        );
+                ['lussen.hofer'],
+            ],
+        ];
     }
     
     
@@ -87,7 +87,7 @@ class StatusArrayTest extends TestCase
     {
         $this->expectException(ConversionException::class);
 
-        $value = array($stupidValue);
+        $value = [$stupidValue];
         $this->type->convertToDatabaseValue($value, $this->platform);
     }
     
@@ -105,12 +105,12 @@ class StatusArrayTest extends TestCase
     
     public function provideSerializedValues()
     {
-        return array(
-            array(
-                array('lussen', 'hofer', '645', 'meisten:lusdre', 'larva.lussutab.tussi'),
+        return [
+            [
+                ['lussen', 'hofer', '645', 'meisten:lusdre', 'larva.lussutab.tussi'],
                 '[lussen];[hofer];[645];[meisten:lusdre];[larva.lussutab.tussi]',
-            )
-        );
+            ]
+        ];
     }
     
     

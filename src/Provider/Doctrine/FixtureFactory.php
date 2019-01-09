@@ -45,9 +45,9 @@ class FixtureFactory
         
         $this->entityNamespace = '';
         
-        $this->entityDefs = array();
+        $this->entityDefs = [];
         
-        $this->singletons = array();
+        $this->singletons = [];
         
         $this->persist = false;
     }
@@ -74,7 +74,7 @@ class FixtureFactory
      *
      * If you've called `persistOnGet()` then the entity is also persisted.
      */
-    public function get($name, array $fieldOverrides = array())
+    public function get($name, array $fieldOverrides = [])
     {
         if (isset($this->singletons[$name])) {
             return $this->singletons[$name];
@@ -86,7 +86,7 @@ class FixtureFactory
         $this->checkFieldOverrides($def, $fieldOverrides);
         
         $ent = $def->getEntityMetadata()->newInstance();
-        $fieldValues = array();
+        $fieldValues = [];
         foreach ($def->getFieldDefs() as $fieldName => $fieldDef) {
             $fieldValues[$fieldName] = array_key_exists($fieldName, $fieldOverrides)
                 ? $fieldOverrides[$fieldName]
@@ -118,7 +118,7 @@ class FixtureFactory
      *
      * If you've called `persistOnGet()` then the entities are also persisted.
      */
-    public function getList($name, array $fieldOverrides = array(), $numberOfInstances = 1)
+    public function getList($name, array $fieldOverrides = [], $numberOfInstances = 1)
     {
         if ($numberOfInstances < 1) {
             throw new \InvalidArgumentException('Can only get >= 1 instances');
@@ -128,7 +128,7 @@ class FixtureFactory
             $numberOfInstances = 1;
         }
 
-        $instances = array();
+        $instances = [];
         for ($i = 0; $i < $numberOfInstances; $i++) {
             $instances[] = $this->get($name, $fieldOverrides);
         }
@@ -159,7 +159,7 @@ class FixtureFactory
         }
     }
 
-    protected function createCollectionFrom($array = array())
+    protected function createCollectionFrom($array = [])
     {
         if (is_array($array)) {
             return new ArrayCollection($array);
@@ -183,7 +183,7 @@ class FixtureFactory
      *
      * It's illegal to call this if `$name` already has a singleton.
      */
-    public function getAsSingleton($name, array $fieldOverrides = array())
+    public function getAsSingleton($name, array $fieldOverrides = [])
     {
         if (isset($this->singletons[$name])) {
             throw new Exception("Already a singleton: $name");
@@ -219,7 +219,7 @@ class FixtureFactory
      *
      * @return FixtureFactory
      */
-    public function defineEntity($name, array $fieldDefs = array(), array $config = array())
+    public function defineEntity($name, array $fieldDefs = [], array $config = [])
     {
         if (isset($this->entityDefs[$name])) {
             throw new Exception("Entity '$name' already defined in fixture factory");

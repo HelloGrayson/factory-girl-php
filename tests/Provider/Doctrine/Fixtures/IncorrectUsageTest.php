@@ -44,9 +44,9 @@ class IncorrectUsageTest extends TestCase
     {
         $this->expectException(\Exception::class);
         
-        $this->factory->defineEntity('SpaceShip', array(
+        $this->factory->defineEntity('SpaceShip', [
             'pieType' => 'blueberry'
-        ));
+        ]);
     }
     
     /**
@@ -54,13 +54,13 @@ class IncorrectUsageTest extends TestCase
      */
     public function throwsWhenTryingToGiveNonexistentFieldsWhileConstructing()
     {
-        $this->factory->defineEntity('SpaceShip', array('name' => 'Alpha'));
+        $this->factory->defineEntity('SpaceShip', ['name' => 'Alpha']);
 
         $this->expectException(\Exception::class);
 
-        $this->factory->get('SpaceShip', array(
+        $this->factory->get('SpaceShip', [
             'pieType' => 'blueberry'
-        ));
+        ]);
     }
 
     /**
@@ -72,6 +72,6 @@ class IncorrectUsageTest extends TestCase
 
         $this->expectException(\Exception::class);
 
-        $this->factory->getList('SpaceShip', array(), 0);
+        $this->factory->getList('SpaceShip', [], 0);
     }
 }

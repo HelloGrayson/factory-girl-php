@@ -13,12 +13,12 @@ class QueryBuilder extends DoctrineQueryBuilder
     /**
      * @var array<string => boolean>
      */
-    protected $_statuses = array();
+    protected $_statuses = [];
     
     /**
      * @var array<callback(Query)>
      */
-    protected $_queryConfigurers = array();
+    protected $_queryConfigurers = [];
     
     /**
      * Entity name associated with this query builder (if any)

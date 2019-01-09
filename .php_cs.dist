@@ -6,6 +6,9 @@ return PhpCsFixer\Config::create()
     ->setRiskyAllowed(true)
     ->setRules([
         '@PSR2' => true,
+        'array_syntax' => [
+            'syntax' => 'short',
+        ],
         'php_unit_set_up_tear_down_visibility' => true,
     ])
     ->setFinder($finder);

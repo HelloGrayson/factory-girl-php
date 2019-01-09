@@ -11,9 +11,9 @@ class BidirectionalReferencesTest extends TestCase
     public function bidirectionalOntToManyReferencesAreAssignedBothWays()
     {
         $this->factory->defineEntity('SpaceShip');
-        $this->factory->defineEntity('Person', array(
+        $this->factory->defineEntity('Person', [
             'spaceShip' => FieldDef::reference('SpaceShip')
-        ));
+        ]);
         
         $person = $this->factory->get('Person');
         $ship = $person->getSpaceShip();
@@ -26,9 +26,9 @@ class BidirectionalReferencesTest extends TestCase
      */
     public function unidirectionalReferencesWorkAsUsual()
     {
-        $this->factory->defineEntity('Badge', array(
+        $this->factory->defineEntity('Badge', [
             'owner' => FieldDef::reference('Person')
-        ));
+        ]);
         $this->factory->defineEntity('Person');
         
         $this->assertInstanceOf(TestEntity\Person::class, $this->factory->get('Badge')->getOwner());
@@ -40,9 +40,9 @@ class BidirectionalReferencesTest extends TestCase
     public function whenTheOneSideIsASingletonItMayGetSeveralChildObjects()
     {
         $this->factory->defineEntity('SpaceShip');
-        $this->factory->defineEntity('Person', array(
+        $this->factory->defineEntity('Person', [
             'spaceShip' => FieldDef::reference('SpaceShip')
-        ));
+        ]);
         
         $ship = $this->factory->getAsSingleton('SpaceShip');
         $p1 = $this->factory->get('Person');
