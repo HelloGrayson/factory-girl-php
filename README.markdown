@@ -29,14 +29,16 @@ We'll assume you have a base class for your tests that arranges a fresh `EntityM
 
 ```php
 <?php
-use FactoryGirl\Provider\Doctrine\FixtureFactory,
-    FactoryGirl\Provider\Doctrine\FieldDef;
 
-abstract class TestCase extends \PHPUnit_Framework_TestCase
+use FactoryGirl\Provider\Doctrine\FieldDef;
+use FactoryGirl\Provider\Doctrine\FixtureFactory;
+use PHPUnit\Framework;
+
+abstract class TestCase extends Framework\TestCase
 {
     protected $factory;
 
-    public function setUp()
+    protected function setUp(): void
     {
         // ... (set up a blank database and $this->entityManager) ...
 
@@ -46,17 +48,17 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
         // Define that users have names like user_1, user_2, etc.,
         // that they are not administrators by default and
         // that they point to a Group entity.
-        $this->factory->defineEntity('User', array(
+        $this->factory->defineEntity('User', [
             'username' => FieldDef::sequence("user_%d"),
             'administrator' => false,
             'group' => FieldDef::reference('Group')
-        ));
+        ]);
 
         // Define a Group to just have a unique name as above.
         // The order of the definitions does not matter.
-        $this->factory->defineEntity('Group', array(
+        $this->factory->defineEntity('Group', [
             'name' => FieldDef::sequence("group_%d")
-        ));
+        ]);
 
 
         // If you want your created entities to be saved by default
@@ -73,15 +75,16 @@ Now you can easily get entities and override fields relevant to your test case l
 
 ```php
 <?php
+
 class UserServiceTest extends TestCase
 {
     // ...
 
-    public function testChangingPasswords()
+    public function testChangingPasswords(): void
     {
-        $user = $this->factory->get('User', array(
+        $user = $this->factory->get('User', [
             'name' => 'John'
-        ));
+        ]);
         $this->service->changePassword($user, 'xoo');
         $this->assertSame($user, $this->service->authenticateUser('john', 'xoo'));
     }
@@ -96,15 +99,16 @@ Your first reaction should be to avoid situations like this and specify the shar
 
 ```php
 <?php
+
 class SomeTest extends TestCase
 {
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->org = $this->factory->getAsSingleton('Organization');
     }
 
-    public function testSomething()
+    public function testSomething(): void
     {
         $user1 = $this->factory->get('User');
         $user2 = $this->factory->get('User');
@@ -122,13 +126,17 @@ You can give an 'afterCreate' callback to be called after an entity is created a
 
 ```php
 <?php
-$factory->defineEntity('User', array(
-    'username' => FieldDef::sequence("user_%d"),
-), array(
+
+$factory->defineEntity(
+    'User', 
+    [
+        'username' => FieldDef::sequence("user_%d"),
+    ], 
+    [
     'afterCreate' => function(User $user, array $fieldValues) {
         $user->__construct($fieldValues['username']);
     }
-));
+]);
 ```
 
 ### API reference ###
@@ -137,31 +145,35 @@ $factory->defineEntity('User', array(
 <?php
 
 // Defining entities
-$factory->defineEntity('EntityName', array(
-    'simpleField' => 'constantValue',
-
-    'generatedField' => function($factory) { return ...; },
-
-    'sequenceField1' => FieldDef::sequence('name-%d'), // name-1, name-2, ...
-    'sequenceField2' => FieldDef::sequence('name-'),   // the same
-    'sequenceField3' => FieldDef::sequence(function($n) { return "name-$n"; }),
-
-    'referenceField' => FieldDef::reference('OtherEntity')
-), array(
-    'afterCreate' => function($entity, $fieldValues) {
-        // ...
-    }
-));
+$factory->defineEntity(
+    'EntityName', 
+    [
+        'simpleField' => 'constantValue',
+    
+        'generatedField' => function($factory) { return ...; },
+    
+        'sequenceField1' => FieldDef::sequence('name-%d'), // name-1, name-2, ...
+        'sequenceField2' => FieldDef::sequence('name-'),   // the same
+        'sequenceField3' => FieldDef::sequence(function($n) { return "name-$n"; }),
+    
+        'referenceField' => FieldDef::reference('OtherEntity')
+    ], 
+    [
+        'afterCreate' => function($entity, $fieldValues) {
+            // ...
+        }
+    ]
+);
 
 // Getting an entity (new or singleton)
-$factory->get('EntityName', array('field' => 'value'));
+$factory->get('EntityName', ['field' => 'value']);
 
 // Getting an array of entities
 $numberOfEntities = 15;
-$factory->getList('EntityName', array('field' => 'value'), $numberOfEntities);
+$factory->getList('EntityName', ['field' => 'value'], $numberOfEntities);
 
 // Singletons
-$factory->getAsSingleton('EntityName', array('field' => 'value'));
+$factory->getAsSingleton('EntityName', ['field' => 'value']);
 $factory->setSingleton('EntityName', $entity);
 $factory->unsetSingleton('EntityName');
 
