@@ -1,7 +1,7 @@
 Factory Girl in PHP
 ===================
 
-[![Build Status](https://travis-ci.org/breerly/factory-girl-php.svg?branch=master)](https://travis-ci.org/breerly/factory-girl-php)
+[![Continuous Integration](https://github.com/unhashable/factory-girl-php/workflows/Continuous%20Integration/badge.svg)](https://github.com/unhashable/factory-girl-php/actions)
 
 A PHP port of Thoughtbot's Ruby [Factory Girl](https://github.com/thoughtbot/factory_girl). Based on a fork of [xi-doctrine](https://github.com/xi-project/xi-doctrine).
 
