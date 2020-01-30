@@ -51,7 +51,7 @@ jobs:
         run: "composer update --no-interaction --no-progress --no-suggest"
 
       - name: "Run friendsofphp/php-cs-fixer"
-        run: "vendor/bin/php-cs-fixer fix --config=.php_cs --diff --diff-format=udiff --dry-run --verbose"
+        run: "vendor/bin/php-cs-fixer fix --config=.php_cs.dist --diff --diff-format=udiff --dry-run --verbose"
 
   tests:
     name: "Tests"
