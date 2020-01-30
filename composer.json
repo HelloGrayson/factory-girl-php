@@ -24,6 +24,7 @@
     },
     "require": {
         "php": "^7.1",
+        "doctrine/annotations": "^1.7.0",
         "doctrine/common": "^2.2.1",
         "doctrine/dbal": "^2.2.1",
         "doctrine/orm": "^2.6.3"
