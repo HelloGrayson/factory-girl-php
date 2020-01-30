@@ -24,9 +24,9 @@
     },
     "require": {
         "php": "^7.1",
-        "doctrine/common": ">=2.2.1,<=2.10-dev",
-        "doctrine/dbal": ">=2.2.1,<=2.9-dev",
-        "doctrine/orm": ">=2.6.3,<3.0-dev"
+        "doctrine/common": "^2.2.1",
+        "doctrine/dbal": "^2.2.1",
+        "doctrine/orm": "^2.6.3"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.14.0",
