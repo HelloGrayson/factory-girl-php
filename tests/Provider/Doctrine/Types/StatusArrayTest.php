@@ -31,7 +31,6 @@ class StatusArrayTest extends TestCase
         $this->assertSame('statusarray', $this->type->getName());
     }
 
-
     /**
      * @test
      */
@@ -40,7 +39,6 @@ class StatusArrayTest extends TestCase
         $this->assertNull($this->type->convertToDatabaseValue(null, $this->platform));
         $this->assertNull($this->type->convertToPHPValue(null, $this->platform));
     }
-
 
     /**
      * @test
@@ -53,7 +51,6 @@ class StatusArrayTest extends TestCase
         $this->type->convertToDatabaseValue($value, $this->platform);
     }
 
-
     public function provideStupidValues()
     {
         return [
@@ -62,7 +59,6 @@ class StatusArrayTest extends TestCase
             ['lussenhofen%meister'],
         ];
     }
-
 
     public function provideAcceptableValues()
     {
@@ -78,7 +74,6 @@ class StatusArrayTest extends TestCase
         ];
     }
 
-
     /**
      * @test
      * @dataProvider provideStupidValues
@@ -91,7 +86,6 @@ class StatusArrayTest extends TestCase
         $this->type->convertToDatabaseValue($value, $this->platform);
     }
 
-
     /**
      * @test
      * @dataProvider provideAcceptableValues
@@ -102,7 +96,6 @@ class StatusArrayTest extends TestCase
         $this->assertSame($expectedSerialization, $serialization);
     }
 
-
     public function provideSerializedValues()
     {
         return [
@@ -112,7 +105,6 @@ class StatusArrayTest extends TestCase
             ]
         ];
     }
-
 
     /**
      * @test

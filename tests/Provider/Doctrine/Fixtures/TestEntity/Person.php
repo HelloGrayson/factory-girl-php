@@ -22,7 +22,6 @@ class Person
      */
     protected $spaceShip;
 
-
     public function __construct($name, SpaceShip $spaceShip = null)
     {
         $this->name = $name;

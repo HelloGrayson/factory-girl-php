@@ -38,7 +38,6 @@ class FixtureFactory
      */
     protected $persist;
 
-
     public function __construct(EntityManager $em)
     {
         $this->em = $em;
@@ -64,7 +63,6 @@ class FixtureFactory
     {
         return $this->entityNamespace;
     }
-
 
     /**
      * Get an entity and its dependencies.
@@ -107,14 +105,12 @@ class FixtureFactory
             $config['afterCreate']($ent, $fieldValues);
         }
 
-
         if ($this->persist) {
             $this->em->persist($ent);
         }
 
         return $ent;
     }
-
 
     /**
      * Get an array of entities and their dependencies.

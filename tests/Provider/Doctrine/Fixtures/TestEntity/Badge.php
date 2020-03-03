@@ -22,7 +22,6 @@ class Badge
      */
     protected $owner;
 
-
     public function __construct($label, Person $owner)
     {
         $this->label = $label;

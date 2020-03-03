@@ -7,7 +7,6 @@ namespace FactoryGirl\Tests\Provider\Doctrine;
 use Doctrine\ORM\EntityManager;
 use FactoryGirl\Provider\Doctrine\EntityDefinitionUnavailable;
 use FactoryGirl\Provider\Doctrine\FixtureFactory;
-
 use PHPUnit\Framework;
 
 /**
