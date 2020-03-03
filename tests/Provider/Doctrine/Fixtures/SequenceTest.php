@@ -21,7 +21,7 @@ class SequenceTest extends TestCase
         $this->assertSame('Alpha 3', $this->factory->get('SpaceShip')->getName());
         $this->assertSame('Alpha 4', $this->factory->get('SpaceShip')->getName());
     }
-    
+
     /**
      * @test
      */
@@ -35,7 +35,7 @@ class SequenceTest extends TestCase
         $this->assertSame('Beta 3', $this->factory->get('SpaceShip')->getName());
         $this->assertSame('Beta 4', $this->factory->get('SpaceShip')->getName());
     }
-    
+
     /**
      * @test
      */

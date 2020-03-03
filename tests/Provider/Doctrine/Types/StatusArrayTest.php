@@ -11,7 +11,7 @@ Type::addType('statusarray', 'FactoryGirl\Provider\Doctrine\DBAL\Types\StatusArr
 class StatusArrayTest extends TestCase
 {
     protected $platform;
-    
+
     /**
      * @var \FactoryGirl\Provider\Doctrine\DBAL\Types\StatusArrayType
      */
@@ -30,8 +30,8 @@ class StatusArrayTest extends TestCase
     {
         $this->assertSame('statusarray', $this->type->getName());
     }
-    
-    
+
+
     /**
      * @test
      */
@@ -40,8 +40,8 @@ class StatusArrayTest extends TestCase
         $this->assertNull($this->type->convertToDatabaseValue(null, $this->platform));
         $this->assertNull($this->type->convertToPHPValue(null, $this->platform));
     }
-    
-    
+
+
     /**
      * @test
      */
@@ -52,8 +52,8 @@ class StatusArrayTest extends TestCase
         $value = 'lussenhof';
         $this->type->convertToDatabaseValue($value, $this->platform);
     }
-    
-    
+
+
     public function provideStupidValues()
     {
         return [
@@ -62,8 +62,8 @@ class StatusArrayTest extends TestCase
             ['lussenhofen%meister'],
         ];
     }
-    
-    
+
+
     public function provideAcceptableValues()
     {
         return [
@@ -77,8 +77,8 @@ class StatusArrayTest extends TestCase
             ],
         ];
     }
-    
-    
+
+
     /**
      * @test
      * @dataProvider provideStupidValues
@@ -90,8 +90,8 @@ class StatusArrayTest extends TestCase
         $value = [$stupidValue];
         $this->type->convertToDatabaseValue($value, $this->platform);
     }
-    
-    
+
+
     /**
      * @test
      * @dataProvider provideAcceptableValues
@@ -101,8 +101,8 @@ class StatusArrayTest extends TestCase
         $serialization = $this->type->convertToDatabaseValue($acceptableValue, $this->platform);
         $this->assertSame($expectedSerialization, $serialization);
     }
-    
-    
+
+
     public function provideSerializedValues()
     {
         return [
@@ -112,8 +112,8 @@ class StatusArrayTest extends TestCase
             ]
         ];
     }
-    
-    
+
+
     /**
      * @test
      * @dataProvider provideSerializedValues

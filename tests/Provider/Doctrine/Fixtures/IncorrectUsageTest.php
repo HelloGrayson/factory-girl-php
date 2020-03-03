@@ -9,12 +9,12 @@ class IncorrectUsageTest extends TestCase
     public function throwsWhenTryingToDefineTheSameEntityTwice()
     {
         $factory = $this->factory->defineEntity('SpaceShip');
-        
+
         $this->expectException(\Exception::class);
-        
+
         $factory->defineEntity('SpaceShip');
     }
-    
+
     /**
      * @test
      */
@@ -24,7 +24,7 @@ class IncorrectUsageTest extends TestCase
 
         $this->factory->defineEntity('NotAClass');
     }
-    
+
     /**
      * @test
      */
@@ -33,22 +33,22 @@ class IncorrectUsageTest extends TestCase
         $this->assertTrue(class_exists('FactoryGirl\Tests\Provider\Doctrine\Fixtures\TestEntity\NotAnEntity', true));
 
         $this->expectException(\Exception::class);
-        
+
         $this->factory->defineEntity('NotAnEntity');
     }
-    
+
     /**
      * @test
      */
     public function throwsWhenTryingToDefineNonexistentFields()
     {
         $this->expectException(\Exception::class);
-        
+
         $this->factory->defineEntity('SpaceShip', [
             'pieType' => 'blueberry'
         ]);
     }
-    
+
     /**
      * @test
      */

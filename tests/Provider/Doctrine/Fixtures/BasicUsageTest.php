@@ -16,10 +16,10 @@ class BasicUsageTest extends TestCase
                 'name' => 'My BattleCruiser'
             ])
             ->get('SpaceShip');
-        
+
         $this->assertSame('My BattleCruiser', $ss->getName());
     }
-    
+
     /**
      * @test
      */
@@ -31,12 +31,12 @@ class BasicUsageTest extends TestCase
                 return "M/S $name";
             }
         ]);
-        
+
         $this->assertSame('M/S Star', $this->factory->get('SpaceShip')->getName());
         $name = "Superstar";
         $this->assertSame('M/S Superstar', $this->factory->get('SpaceShip')->getName());
     }
-    
+
     /**
      * @test
      */
@@ -60,7 +60,7 @@ class BasicUsageTest extends TestCase
             ->get('SpaceStation');
         $this->assertSame('Babylon5', $ss->getName());
     }
-    
+
     /**
      * @test
      */
@@ -71,7 +71,7 @@ class BasicUsageTest extends TestCase
             ->get('SpaceShip');
         $this->assertFalse($ss->constructorWasCalled());
     }
-    
+
     /**
      * @test
      */
@@ -82,7 +82,7 @@ class BasicUsageTest extends TestCase
                 'name' => 'Battlestar Galaxy'
             ])
             ->get('SpaceShip');
-        
+
         $this->assertInstanceOf(ArrayCollection::class, $ss->getCrew());
         $this->assertEmpty($ss->getCrew());
     }
@@ -104,12 +104,12 @@ class BasicUsageTest extends TestCase
             'name' => 'Battlestar Galaxy',
             'crew' => [$p1, $p2]
         ]);
-        
+
         $this->assertInstanceOf(ArrayCollection::class, $ship->getCrew());
         $this->assertTrue($ship->getCrew()->contains($p1));
         $this->assertTrue($ship->getCrew()->contains($p2));
     }
-    
+
     /**
      * @test
      */

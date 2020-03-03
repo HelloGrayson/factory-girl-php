@@ -14,15 +14,15 @@ class SpaceStation
      * @Column(type="integer")
      */
     protected $id;
-    
+
     /** @Column */
     protected $name = 'Babylon5';
-    
+
     public function __construct($name)
     {
         $this->name = $name;
     }
-    
+
     public function getId()
     {
         return $this->id;
@@ -32,7 +32,7 @@ class SpaceStation
     {
         return $this->name;
     }
-    
+
     public function setName($name)
     {
         $this->name = $name;

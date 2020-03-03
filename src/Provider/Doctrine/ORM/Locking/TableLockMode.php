@@ -5,7 +5,7 @@ class TableLockMode
 {
     const READ = 8;
     const WRITE = 16;
-    
+
     /**
      * @param int $mode
      * @return null|string

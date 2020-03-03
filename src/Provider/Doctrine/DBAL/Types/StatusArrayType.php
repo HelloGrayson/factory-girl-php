@@ -13,12 +13,12 @@ use Doctrine\DBAL\Types\ConversionException;
 class StatusArrayType extends Type
 {
     const STATUSARRAY = 'statusarray';
-    
+
     /**
      * @var string Validation regex
      */
     protected $acceptedPattern = '#^[a-zA-Z0-9:_\.]+$#';
-        
+
     public function getSQLDeclaration(array $fieldDeclaration, \Doctrine\DBAL\Platforms\AbstractPlatform $platform)
     {
         return $platform->getVarcharTypeDeclarationSQL($fieldDeclaration);
@@ -29,7 +29,7 @@ class StatusArrayType extends Type
         if ($value === null) {
             return null;
         }
-        
+
         if (!is_array($value)) {
             throw new ConversionException('Value must be an array');
         }
@@ -39,11 +39,11 @@ class StatusArrayType extends Type
                 throw new ConversionException("'{$val}' does not match pattern '{$this->acceptedPattern}'");
             }
         }
-        
+
         array_walk($value, function (&$walker) {
             $walker = '[' . $walker . ']';
         });
-        
+
         return implode(';', $value);
     }
 
@@ -53,14 +53,14 @@ class StatusArrayType extends Type
             return null;
         }
 
-        
+
         $ret = explode(';', $value);
-        
+
         array_walk($ret, function (&$unwashed) {
             $unwashed = trim($unwashed, '[]');
         });
-        
-        
+
+
         return $ret;
     }
 

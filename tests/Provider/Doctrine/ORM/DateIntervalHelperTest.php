@@ -15,13 +15,13 @@ class DateIntervalHelperTest extends Framework\TestCase
     public function testYearsRejectsInvalidValue($years)
     {
         $helper = new DateIntervalHelper(new \DateTime());
-        
+
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage(sprintf(
             'Expected integer or integerish string, got "%s" instead.',
             is_object($years) ? get_class($years) : gettype($years)
         ));
-        
+
         $helper->years($years);
     }
 
@@ -33,7 +33,7 @@ class DateIntervalHelperTest extends Framework\TestCase
     public function testMonthsRejectsInvalidValue($months)
     {
         $helper = new DateIntervalHelper(new \DateTime());
-        
+
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage(sprintf(
             'Expected integer or integerish string, got "%s" instead.',
@@ -51,13 +51,13 @@ class DateIntervalHelperTest extends Framework\TestCase
     public function testDaysRejectsInvalidValue($days)
     {
         $helper = new DateIntervalHelper(new \DateTime());
-        
+
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage(sprintf(
             'Expected integer or integerish string, got "%s" instead.',
             is_object($days) ? get_class($days) : gettype($days)
         ));
-        
+
         $helper->days($days);
     }
 
@@ -79,7 +79,7 @@ class DateIntervalHelperTest extends Framework\TestCase
             'resource' => fopen(__FILE__, 'r'),
             'string' => 'foo',
         ];
-        
+
         return \array_map(function ($value) {
             return [
                 $value,
