@@ -8,9 +8,9 @@ namespace FactoryGirl\Provider\Doctrine;
  */
 class DateIntervalHelper
 {
-    const DATE_TIME = 1;
-    const TIMESTAMP = 2;
-    const DATE_STRING = 3;
+    public const DATE_TIME = 1;
+    public const TIMESTAMP = 2;
+    public const DATE_STRING = 3;
 
     /**
      * @var bool

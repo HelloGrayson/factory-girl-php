@@ -12,7 +12,7 @@ use Doctrine\DBAL\Types\ConversionException;
  */
 class StatusArrayType extends Type
 {
-    const STATUSARRAY = 'statusarray';
+    public const STATUSARRAY = 'statusarray';
 
     /**
      * @var string Validation regex
