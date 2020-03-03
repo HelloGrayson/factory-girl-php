@@ -17,22 +17,22 @@ class FixtureFactory
      * @var EntityManager
      */
     protected $em;
-    
+
     /**
      * @var string
      */
     protected $entityNamespace;
-    
+
     /**
      * @var array<EntityDef>
      */
     protected $entityDefs;
-    
+
     /**
      * @var array
      */
     protected $singletons;
-    
+
     /**
      * @var boolean
      */
@@ -42,16 +42,16 @@ class FixtureFactory
     public function __construct(EntityManager $em)
     {
         $this->em = $em;
-        
+
         $this->entityNamespace = '';
-        
+
         $this->entityDefs = [];
-        
+
         $this->singletons = [];
-        
+
         $this->persist = false;
     }
-    
+
     /**
      * Sets the namespace to be prefixed to all entity names passed to this class.
      */
@@ -59,13 +59,13 @@ class FixtureFactory
     {
         $this->entityNamespace = trim($namespace, '\\');
     }
-    
+
     public function getEntityNamespace()
     {
         return $this->entityNamespace;
     }
-    
-    
+
+
     /**
      * Get an entity and its dependencies.
      *
@@ -73,18 +73,24 @@ class FixtureFactory
      * a singleton with the entity name. See `getAsSingleton()`.
      *
      * If you've called `persistOnGet()` then the entity is also persisted.
+     *
+     * @throws EntityDefinitionUnavailable
      */
     public function get($name, array $fieldOverrides = [])
     {
         if (isset($this->singletons[$name])) {
             return $this->singletons[$name];
         }
-        
+
+        if (!array_key_exists($name, $this->entityDefs)) {
+            throw EntityDefinitionUnavailable::for($name);
+        }
+
         $def = $this->entityDefs[$name];
         $config = $def->getConfig();
-        
+
         $this->checkFieldOverrides($def, $fieldOverrides);
-        
+
         $ent = $def->getEntityMetadata()->newInstance();
         $fieldValues = [];
         foreach ($def->getFieldDefs() as $fieldName => $fieldDef) {
@@ -92,20 +98,20 @@ class FixtureFactory
                 ? $fieldOverrides[$fieldName]
                 : $fieldDef($this);
         }
-        
+
         foreach ($fieldValues as $fieldName => $fieldValue) {
             $this->setField($ent, $def, $fieldName, $fieldValue);
         }
-        
+
         if (isset($config['afterCreate'])) {
             $config['afterCreate']($ent, $fieldValues);
         }
-        
-        
+
+
         if ($this->persist) {
             $this->em->persist($ent);
         }
-        
+
         return $ent;
     }
 
@@ -143,11 +149,11 @@ class FixtureFactory
             throw new Exception("Field(s) not in " . $def->getEntityType() . ": '" . implode("', '", $extraFields) . "'");
         }
     }
-    
+
     protected function setField($ent, EntityDef $def, $fieldName, $fieldValue)
     {
         $metadata = $def->getEntityMetadata();
-        
+
         if ($metadata->isCollectionValuedAssociation($fieldName)) {
             $metadata->setFieldValue($ent, $fieldName, $this->createCollectionFrom($fieldValue));
         } else {
@@ -167,7 +173,7 @@ class FixtureFactory
 
         return new ArrayCollection();
     }
-    
+
     /**
      * Sets whether `get()` should automatically persist the entity it creates.
      * By default it does not. In any case, you still need to call
@@ -177,7 +183,7 @@ class FixtureFactory
     {
         $this->persist = $enabled;
     }
-    
+
     /**
      * A shorthand combining `get()` and `setSingleton()`.
      *
@@ -191,7 +197,7 @@ class FixtureFactory
         $this->singletons[$name] = $this->get($name, $fieldOverrides);
         return $this->singletons[$name];
     }
-    
+
     /**
      * Sets `$entity` to be the singleton for `$name`.
      *
@@ -201,7 +207,7 @@ class FixtureFactory
     {
         $this->singletons[$name] = $entity;
     }
-    
+
     /**
      * Unsets the singleton for `$name`.
      *
@@ -211,7 +217,7 @@ class FixtureFactory
     {
         unset($this->singletons[$name]);
     }
-    
+
     /**
      * Defines how to create a default entity of type `$name`.
      *
@@ -224,22 +230,22 @@ class FixtureFactory
         if (isset($this->entityDefs[$name])) {
             throw new Exception("Entity '$name' already defined in fixture factory");
         }
-        
+
         $type = $this->addNamespace($name);
         if (!class_exists($type, true)) {
             throw new Exception("Not a class: $type");
         }
-        
+
         $metadata = $this->em->getClassMetadata($type);
         if (!isset($metadata)) {
             throw new Exception("Unknown entity type: $type");
         }
-        
+
         $this->entityDefs[$name] = new EntityDef($this->em, $name, $type, $fieldDefs, $config);
-        
+
         return $this;
     }
-    
+
     /**
      * @param  string $name
      * @return string
@@ -254,7 +260,7 @@ class FixtureFactory
 
         return $this->entityNamespace . '\\' . $name;
     }
-    
+
     protected function updateCollectionSideOfAssocation($entityBeingCreated, $metadata, $fieldName, $value)
     {
         $assoc = $metadata->getAssociationMapping($fieldName);
