@@ -3,8 +3,8 @@ namespace FactoryGirl\Provider\Doctrine\ORM\Locking;
 
 class TableLockMode
 {
-    const READ = 8;
-    const WRITE = 16;
+    public const READ = 8;
+    public const WRITE = 16;
 
     /**
      * @param int $mode
