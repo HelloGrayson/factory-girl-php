@@ -53,13 +53,11 @@ class StatusArrayType extends Type
             return null;
         }
 
-
         $ret = explode(';', $value);
 
         array_walk($ret, function (&$unwashed) {
             $unwashed = trim($unwashed, '[]');
         });
-
 
         return $ret;
     }

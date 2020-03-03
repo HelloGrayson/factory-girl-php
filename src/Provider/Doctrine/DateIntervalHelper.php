@@ -17,7 +17,6 @@ class DateIntervalHelper
      */
     public $negative;
 
-
     /**
      * @param \DateTime $time
      * @param bool|false $negative

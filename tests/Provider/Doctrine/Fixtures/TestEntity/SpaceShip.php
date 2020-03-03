@@ -28,7 +28,6 @@ class SpaceShip
      */
     protected $constructorWasCalled = false;
 
-
     public function __construct($name)
     {
         $this->name = $name;
