@@ -15,7 +15,7 @@ class TableLock
      * @var Repository
      */
     private $repository;
-    
+
     /**
      * @param Repository $repository
      */
@@ -23,7 +23,7 @@ class TableLock
     {
         $this->repository = $repository;
     }
-    
+
     /**
      * @return Repository
      */
@@ -31,7 +31,7 @@ class TableLock
     {
         return $this->repository;
     }
-    
+
     /**
      * Attempt to acquire a table level lock in MySQL for the duration of the
      * given transaction. IS NOT IN ANY WAY GUARANTEED TO WORK. MySQL requires
@@ -50,7 +50,7 @@ class TableLock
     {
         $lock = $this->getLockString($lockMode);
         $unlock = $this->getUnlockString();
-        
+
         return $this->getRepository()->transaction(function (EntityManager $em, Repository $repository) use ($lock, $unlock, $transaction) {
             $conn = $em->getConnection();
             $conn->executeQuery($lock);
@@ -65,7 +65,7 @@ class TableLock
             }
         });
     }
-    
+
     /**
      * Get the MySQL statement for locking the table underlying this repository
      * for simple read and/or write operations given an appropriate lock mode
@@ -80,13 +80,13 @@ class TableLock
         if (!$lockModeString) {
             throw new LockException("Invalid lock mode: $lockMode");
         }
-        
+
         $tableName = $this->getTableName();
         $aliases = $this->getTableAliasGuesstimates($tableName);
-        
+
         return $this->constructLockString($tableName, $aliases, $lockModeString);
     }
-    
+
     /**
      * @return string
      */
@@ -95,7 +95,7 @@ class TableLock
         // Blatant violation of law of demeter
         return $this->getRepository()->getClassMetadata()->getTableName();
     }
-    
+
     /**
      * @param string $tableName
      * @param array $aliases
@@ -110,7 +110,7 @@ class TableLock
         }
         return $lock;
     }
-    
+
     /**
      * Attempt to guess at the table name aliases used by Doctrine for a given
      * table name
@@ -127,7 +127,7 @@ class TableLock
             't0'
         ]);
     }
-    
+
     /**
      * The MySQL statement required to unlock tables after a transaction
      *

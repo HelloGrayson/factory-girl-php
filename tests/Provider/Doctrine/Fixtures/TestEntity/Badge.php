@@ -12,7 +12,7 @@ class Badge
      * @Column(type="integer")
      */
     protected $id;
-    
+
     /** @Column */
     protected $label;
 
@@ -21,14 +21,14 @@ class Badge
      * @JoinColumn(name="person_id", referencedColumnName="id", nullable=true)
      */
     protected $owner;
-    
-    
+
+
     public function __construct($label, Person $owner)
     {
         $this->label = $label;
         $this->owner = $owner;
     }
-    
+
     public function getId()
     {
         return $this->id;

@@ -14,12 +14,12 @@ class QueryBuilder extends DoctrineQueryBuilder
      * @var array<string => boolean>
      */
     protected $_statuses = [];
-    
+
     /**
      * @var array<callback(Query)>
      */
     protected $_queryConfigurers = [];
-    
+
     /**
      * Entity name associated with this query builder (if any)
      *
@@ -44,7 +44,7 @@ class QueryBuilder extends DoctrineQueryBuilder
     {
         return new static($em);
     }
-    
+
     /**
      * @param EntityManager $em
      * @param string $entityName
@@ -58,7 +58,7 @@ class QueryBuilder extends DoctrineQueryBuilder
         $this->entityAlias = $entityAlias;
         $this->init();
     }
-    
+
     /**
      * Post-construction template method
      *
@@ -71,7 +71,7 @@ class QueryBuilder extends DoctrineQueryBuilder
                  ->from($this->entityName, $this->entityAlias);
         }
     }
-    
+
     /**
      * Configures the created Query using the configurers added to this builder
      *
@@ -85,7 +85,7 @@ class QueryBuilder extends DoctrineQueryBuilder
         }
         return $query;
     }
-    
+
     /**
      * NOTE: Should be protected
      *
@@ -97,7 +97,7 @@ class QueryBuilder extends DoctrineQueryBuilder
         $this->_queryConfigurers[] = $configurer;
         return $this;
     }
-    
+
     /**
      * Ensure that a certain operation has been performed on this object.
      * $status is a string that describes state the operation should affect and
@@ -130,7 +130,7 @@ class QueryBuilder extends DoctrineQueryBuilder
         }
         return $this;
     }
-    
+
     /**
      * Configures the query to force result objects to be partially loaded
      *

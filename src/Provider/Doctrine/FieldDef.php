@@ -39,7 +39,7 @@ class FieldDef
                 return str_replace('%d', $n, $funcOrString);
             };
         }
-        
+
         return function () use (&$n, $funcOrString) {
             $n++;
             return $funcOrString . $n;
@@ -61,7 +61,7 @@ class FieldDef
     {
         return new DateIntervalHelper(new \DateTime(), false);
     }
-    
+
     /**
      * Defines a field to `get()` a named entity from the factory.
      *

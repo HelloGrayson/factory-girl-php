@@ -38,7 +38,7 @@ class DateIntervalHelper
         $this->assertIntegerish($years);
 
         $this->modify(new \DateInterval('P'.$years.'Y'));
-        
+
         return $this;
     }
 
@@ -52,7 +52,7 @@ class DateIntervalHelper
         $this->assertIntegerish($months);
 
         $this->modify(new \DateInterval('P'.$months.'M'));
-        
+
         return $this;
     }
 
@@ -66,14 +66,14 @@ class DateIntervalHelper
         $this->assertIntegerish($days);
 
         $this->modify(new \DateInterval('P'.$days.'D'));
-        
+
         return $this;
     }
-    
+
     private function modify(\DateInterval $interval)
     {
         $interval->invert = (int) $this->negative;
-        
+
         $this->time->add($interval);
     }
 

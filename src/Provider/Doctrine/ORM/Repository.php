@@ -20,7 +20,7 @@ class Repository extends EntityRepository
     {
         return $builder->getQuery()->getResult();
     }
-    
+
     /**
      * @param \Doctrine\ORM\QueryBuilder $builder
      * @param callback(Exception) $fallback optional
@@ -32,7 +32,7 @@ class Repository extends EntityRepository
             return $builder->getQuery()->getSingleResult();
         }, $fallback);
     }
-    
+
     /**
      * @param \Doctrine\ORM\QueryBuilder $builder
      * @param callback(Exception) $fallback optional
@@ -44,7 +44,7 @@ class Repository extends EntityRepository
             return $builder->getQuery()->getSingleScalarResult();
         }, $fallback);
     }
-    
+
     /**
      * Guards against NoResultException and NonUniqueResultException within a
      * callback. Uses a fallback callback in case an exception does occur.
@@ -67,7 +67,7 @@ class Repository extends EntityRepository
             return $fallback($e);
         }
     }
-    
+
     /**
      * Create a query builder, perform the given operation on it and return the
      * query builder. The operation callback receives the query builder and its
@@ -82,7 +82,7 @@ class Repository extends EntityRepository
         $do($qb, $qb->expr());
         return $qb;
     }
-    
+
     /**
      * Create a query builder. Override this in a child class to create a
      * builder of the appropriate type.
@@ -93,7 +93,7 @@ class Repository extends EntityRepository
     {
         return QueryBuilder::create($this->_em);
     }
-    
+
     /**
      * Gets a reference to the entity identified by the given type and identifier
      * without actually loading it, if the entity is not yet loaded.
@@ -198,7 +198,7 @@ class Repository extends EntityRepository
             return $callback($entity, $em, $self);
         });
     }
-    
+
     /**
      * @return string
      */
@@ -206,7 +206,7 @@ class Repository extends EntityRepository
     {
         return parent::getEntityName();
     }
-    
+
     /**
      * Attempt to acquire a table level lock in MySQL for the duration of the
      * given transaction. IS NOT IN ANY WAY GUARANTEED TO WORK.
@@ -221,7 +221,7 @@ class Repository extends EntityRepository
     {
         return $this->getTableLock()->transaction($lockMode, $transaction);
     }
-    
+
     /**
      * @return TableLock
      */

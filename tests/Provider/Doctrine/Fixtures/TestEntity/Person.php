@@ -12,7 +12,7 @@ class Person
      * @Column(type="integer")
      */
     protected $id;
-    
+
     /** @Column */
     protected $name;
 
@@ -21,14 +21,14 @@ class Person
      * @JoinColumn(name="spaceShip_id", referencedColumnName="id", nullable=true)
      */
     protected $spaceShip;
-    
-    
+
+
     public function __construct($name, SpaceShip $spaceShip = null)
     {
         $this->name = $name;
         $this->spaceShip = $spaceShip;
     }
-    
+
     public function getId()
     {
         return $this->id;
