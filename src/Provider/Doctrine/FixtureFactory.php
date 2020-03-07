@@ -4,6 +4,7 @@ namespace FactoryGirl\Provider\Doctrine;
 use Doctrine\ORM\EntityManager;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping;
 use Exception;
 
 /**
@@ -84,12 +85,17 @@ class FixtureFactory
             throw EntityDefinitionUnavailable::for($name);
         }
 
+        /** @var EntityDef $def */
         $def = $this->entityDefs[$name];
+
         $config = $def->getConfig();
 
         $this->checkFieldOverrides($def, $fieldOverrides);
 
-        $ent = $def->getEntityMetadata()->newInstance();
+        /** @var Mapping\ClassMetadata $entityMetadata */
+        $entityMetadata = $def->getEntityMetadata();
+
+        $ent = $entityMetadata->newInstance();
         $fieldValues = [];
         foreach ($def->getFieldDefs() as $fieldName => $fieldDef) {
             $fieldValues[$fieldName] = array_key_exists($fieldName, $fieldOverrides)
@@ -105,7 +111,7 @@ class FixtureFactory
             $config['afterCreate']($ent, $fieldValues);
         }
 
-        if ($this->persist) {
+        if ($this->persist && false === $entityMetadata->isEmbeddedClass) {
             $this->em->persist($ent);
         }
 
